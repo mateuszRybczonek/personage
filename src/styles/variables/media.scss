@@ -1,0 +1,35 @@
+$screen-mobile-sm-max: 374px;
+$screen-mobile-md-min: 375px;
+$screen-mobile-md-max: 413px;
+$screen-mobile-lg-min: 414px;
+$screen-mobile-lg-max: 559px;
+
+$screen-mobile-sm-v-max: 547px; // up to fullscreen iphone 5s
+$screen-mobile-md-v-min: 548px; // fullscreen iPhone 5s
+$screen-mobile-md-v-max: 646px;
+$screen-mobile-lg-v-min: 647px; // fullscreen iPhone 7
+
+$screen-tablet-min: 600px;
+$screen-tablet-max: 1179px;
+
+$screen-desktop-min: 1180px;
+
+$mobile-sm-down: '(max-width: #{$screen-mobile-sm-max})';
+$mobile-sm-v-down: '(max-height: #{$screen-mobile-sm-v-max})';
+
+$mobile-md-only: '(min-width: #{$screen-mobile-md-min}) and (max-width: #{$screen-mobile-md-max})';
+$mobile-md-down: '(max-width: #{$screen-mobile-md-max})';
+$mobile-md-up: '(min-width: #{$screen-mobile-md-min})';
+$mobile-md-v-up: '(min-height: #{$screen-mobile-md-v-min})';
+$mobile-md-v-down: '(max-height: #{$screen-mobile-md-v-max})';
+
+$mobile-lg-only: '(min-width: #{$screen-mobile-lg-min}) and (max-width: #{$screen-mobile-lg-max})';
+$mobile-lg-down: '(max-width: #{$screen-mobile-lg-max})';
+$mobile-lg-up: '(min-width: #{$screen-mobile-lg-min})';
+$mobile-lg-v-up: '(min-height: #{$screen-mobile-lg-v-min})';
+
+$tablet-only: '(min-width: #{$screen-tablet-min}) and (max-width: #{$screen-tablet-max})';
+$tablet-down: '(max-width: #{$screen-tablet-max})';
+$tablet-up: '(min-width: #{$screen-tablet-min})';
+
+$desktop-up: '(min-width: #{$screen-desktop-min})';
