@@ -1,0 +1,81 @@
+{
+  "game": {
+    "offline": "you're offline",
+    "round": "Round"
+  },
+  "general": {
+    "add_to_homescreen_1": "Install this webapp on your iPhone: tap",
+    "add_to_homescreen_2": "and then Add to homescreen.",
+    "close": "Close",
+    "go_back": "Go back",
+    "team_a": "Team A",
+    "team_b": "Team B"
+  },
+  "views": {
+    "categories": {
+      "game_rules": "Game rules",
+      "play": "Play",
+      "title": "Choose categories!",
+    },
+    "emojis": {
+      "game_rules": "Game rules",
+      "title": "Choose your heroes!"
+    },
+    "game": {
+      "begins": "begins",
+      "continue": "Continue game",
+      "new_game": "Start new game",
+      "paused": "Game paused",
+      "pause_tooltip": "Pause and resume the game by clicking on the counter",
+      "skip": "Skip",
+      "swipe": "Swipe right when you’re ready",
+      "timesup": "Time's up!"
+    },
+    "home": {
+      "get_started": "Get started",
+      "title":"Personage"
+    },
+    "onboarding": {
+      "close":"close",
+      "got_it":"got it",
+      "next":"next",
+      "skip":"skip",
+      "slide_num": "Slide {index}",
+      "title":"Game rules"
+    },
+    "onboarding_points": {
+      "description":"A team scores one point for each guess. If opposite team notices breaking the rules, you lose and the round goes to the next team. If draw occurs, the team with less skipped card wins.",
+      "title": "Points"
+    },
+    "onboarding_presentation": {
+      "description":"Describe the keyword avoiding forbidden words.",
+      "title":"Presentation"
+    },
+    "onboarding_team": {
+      "title": "Team",
+      "description":"Split your friends into teams, the team contains two persons. It’s a turn-based game: while one team is presenting, other teams are watching."
+    },
+    "setup": {
+      "choose_your_heroes": "Choose your heroes!",
+      "game": {
+        "rounds": "Rounds",
+        "skips_limit": "Skips limit",
+        "sound_effects": "Sound effects",
+        "time_per_team": "Time per team",
+        "title": "New game"
+      },
+      "game_rules": "Game rules"
+    },
+    "summary": {
+      "correct": "Correct",
+      "draw": "Draw!",
+      "fastest_answer": "The fastest answer",
+      "incorrect": "Incorrect",
+      "new_game": "New game",
+      "skipped": "Skipped",
+      "play_again": "Play again",
+      "team_a_wins": "Team A wins!",
+      "team_b_wins": "Team B wins!"
+    }
+  }
+}
