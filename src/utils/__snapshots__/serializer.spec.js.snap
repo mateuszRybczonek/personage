@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`serializeCards serializes object to proper array 1`] = `
+Array [
+  Object {
+    "category": "category1",
+    "forbiddenWords": Array [
+      "a",
+      "b",
+      "c",
+    ],
+    "keyword": "lorem",
+  },
+  Object {
+    "category": "category1",
+    "forbiddenWords": Array [
+      "d",
+      "e",
+      "f",
+    ],
+    "keyword": "ipsum",
+  },
+  Object {
+    "category": "category2",
+    "forbiddenWords": Array [
+      "g",
+      "h",
+    ],
+    "keyword": "dolor",
+  },
+  Object {
+    "category": "category2",
+    "forbiddenWords": Array [
+      "i",
+      "j",
+    ],
+    "keyword": "sit",
+  },
+]
+`;
