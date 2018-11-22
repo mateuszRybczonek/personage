@@ -3,15 +3,45 @@ module.exports = {
   env: {
     node: true,
   },
+  parserOptions: {
+    parser: 'babel-eslint',
+  },
   extends: [
     'plugin:vue/essential',
     '@vue/airbnb',
   ],
   rules: {
-    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'vue/script-indent': ['error', 2],
+    'vue/component-name-in-template-casing': ['error', 'PascalCase', {
+      ignores: ['router-link', 'router-view', 'transition'],
+    }],
+    'vue/multiline-html-element-content-newline': 'error',
+    'vue/singleline-html-element-content-newline': 'error',
+    'vue/no-spaces-around-equal-signs-in-attribute': 'error',
+    'import/extensions': ['error', 'ignorePackages'],
   },
-  parserOptions: {
-    parser: 'babel-eslint',
-  },
+  overrides: [
+    {
+      files: ['*.vue'],
+      rules: {
+        indent: 'off', // disables default indent rule to not interfere with `vue/script-indent`
+        'default-case': 'off',
+      },
+    },
+    {
+      files: ['*.js'],
+      rules: {
+        'vue/script-indent': 'off',
+      },
+    },
+    {
+      files: ['*.spec.js'],
+      env: {
+        jest: true,
+      },
+      rules: {
+        'import/no-extraneous-dependencies': 'off',
+      },
+    }
+  ],
 };
