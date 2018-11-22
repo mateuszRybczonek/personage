@@ -1,23 +1,47 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Home from './views/Home.vue';
+
+import Home from '@/views/Home';
+
+import {
+  LS_ROUTE_KEY,
+  HOME_URL,
+} from '@/consts';
 
 Vue.use(Router);
 
-export default new Router({
+let isFirstTransition = true;
+
+const router = new Router({
+  mode: 'history',
   routes: [
     {
-      path: '/',
+      path: HOME_URL,
       name: 'home',
       component: Home,
     },
-    {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue'),
-    },
   ],
 });
+
+router.beforeEach((to, from, next) => {
+  const lastRouteName = localStorage.getItem(LS_ROUTE_KEY);
+
+  const shouldRedirect = Boolean(to.name === 'home' &&
+    isFirstTransition &&
+    lastRouteName &&
+    lastRouteName !== 'home');
+
+  if (shouldRedirect) {
+    next({ name: lastRouteName });
+  } else {
+    next();
+  }
+
+  isFirstTransition = false;
+});
+
+router.afterEach((to) => {
+  localStorage.setItem(LS_ROUTE_KEY, to.name);
+});
+
+export default router;
