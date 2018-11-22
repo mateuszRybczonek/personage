@@ -1,6 +1,7 @@
 <template>
   <div :class="$style.home">
     <main :class="$style.home__content">
+      <span :class="$style.home__title">PERSONAGE</span>
       <button
         class="btn btnPrimary"
         :class="$style.home__button"
@@ -46,9 +47,12 @@ export default {
       justify-content: space-between;
     }
 
-    &__animation {
-      @include absolute(top 0);
-      @include sizing(100%);
+    &__title {
+      display: flex;
+      align-items: center;
+      font-family: $ff-notime;
+      font-size: 50px;
+      letter-spacing: 5px;
     }
 
     &__button {
