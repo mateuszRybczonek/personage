@@ -1,7 +1,10 @@
 <template>
   <div :class="$style.home">
     <main :class="$style.home__content">
-      <span :class="$style.home__title">PERSONAGE</span>
+      <section :class="$style.home__logo">
+        <Logo  :class="$style.home__image" />
+        <span :class="$style.home__title">PERSONAGE</span>
+      </section>
       <button
         class="btn btnPrimary"
         :class="$style.home__button"
@@ -14,8 +17,13 @@
 </template>
 
 <script>
+import Logo from '@/assets/logo.svg';
 
 export default {
+  components: {
+    Logo,
+  },
+
   computed: {
     getStartedRouteName() {
       return this.$store.state.onboarding.isFinished
@@ -47,36 +55,30 @@ export default {
       justify-content: space-between;
     }
 
-    &__title {
+    &__logo {
+      @include sizing(250px 65vh);
+
       display: flex;
+      flex-direction: column;
       align-items: center;
+      justify-content: center;
+    }
+
+    &__image {
+      @include sizing(250px);
+      @include relative(top 40px left -10px);
+    }
+
+    &__title {
       font-family: $ff-notime;
-      font-size: 50px;
+      font-size: $fs-huge;
+      font-weight: $fw-bold;
       letter-spacing: 5px;
+      color: $c-yellow;
     }
 
     &__button {
-      animation: slidein 4s ease-out;
-    }
-  }
-
-  .logo {
-    @include sizing(400px);
-  }
-
-  @keyframes slidein {
-    0% {
-      opacity: 0;
-      transform: translateY(100px);
-    }
-
-    60% {
-      opacity: 0;
-    }
-
-    100% {
-      opacity: 1;
-      transform: translateY(0);
+      animation: slidein 2s ease-out;
     }
   }
 </style>
