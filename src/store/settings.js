@@ -1,7 +1,5 @@
-import { secretCategoriesFlow, secretCategory, EASTER_EGG_ENABLED } from '@/consts';
-
 const arrEq = (arr1, arr2) => arr1.join(',') === arr2.join(',');
-const getLastCategories = categories => categories.slice(-secretCategoriesFlow.length);
+const getLastCategories = categories => categories.slice();
 
 export default {
   namespaced: true,
@@ -21,7 +19,6 @@ export default {
     skipsLimit: state => state.skipsLimit,
     sound: state => state.sound,
     timeLimit: state => state.timeLimit,
-    isNetguruMode: state => state.selectedCategories.join('') === secretCategory,
     isPauseTooltipVisible: state => state.isPauseTooltipVisible,
   },
   mutations: {
@@ -51,14 +48,6 @@ export default {
         state.selectedCategories = state.selectedCategories.filter(c => c !== category);
       } else {
         state.selectedCategories.push(category);
-      }
-
-      if (EASTER_EGG_ENABLED) {
-        state.toggledCategoriesStack.push(category);
-        const lastToggledCategories = getLastCategories(state.toggledCategoriesStack);
-        const isMatchingSecretFlow = arrEq(lastToggledCategories, secretCategoriesFlow);
-
-        if (isMatchingSecretFlow) state.selectedCategories = [secretCategory];
       }
     },
   },
