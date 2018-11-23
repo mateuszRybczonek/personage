@@ -3,11 +3,13 @@ import Router from 'vue-router';
 
 import Home from '@/views/Home';
 import Onboarding from '@/views/Onboarding';
+import Setup from '@/views/Setup';
 
 import {
   LS_ROUTE_KEY,
   HOME_URL,
   ONBOARDING_URL,
+  SETUP_URL,
 } from '@/consts';
 
 Vue.use(Router);
@@ -26,6 +28,11 @@ const router = new Router({
       path: ONBOARDING_URL,
       name: 'onboarding',
       component: Onboarding,
+    },
+    {
+      path: SETUP_URL,
+      name: 'setup',
+      component: Setup,
     },
   ],
 });
