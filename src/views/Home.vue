@@ -67,6 +67,8 @@ export default {
     &__image {
       @include sizing(250px);
       @include relative(top 40px left -10px);
+
+      animation: headAnimation 4s ease-in-out infinite;
     }
 
     &__title {
@@ -75,10 +77,6 @@ export default {
       font-weight: $fw-bold;
       letter-spacing: 5px;
       color: $c-yellow;
-    }
-
-    &__button {
-      animation: slidein 2s ease-out;
     }
   }
 </style>
