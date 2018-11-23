@@ -47,13 +47,21 @@
       "description":"A team scores one point for each guess. If opposite team notices breaking the rules, you lose and the round goes to the next team. If draw occurs, the team with less skipped card wins.",
       "title": "Points"
     },
-    "onboarding_presentation": {
+    "onboarding_round_1": {
       "description":"Describe the keyword avoiding forbidden words.",
-      "title":"Presentation"
+      "title":"Round 1"
+    },
+    "onboarding_round_2": {
+      "description":"Describe the keyword using only one word.",
+      "title":"Round 2"
+    },
+    "onboarding_round_3": {
+      "description":"Describe the keyword using gestures. You can't make any sounds.",
+      "title":"Round 3"
     },
     "onboarding_team": {
       "title": "Team",
-      "description":"Split your friends into teams, the team contains two persons. It’s a turn-based game: while one team is presenting, other teams are watching."
+      "description":"Split your friends into teams, each team should contain two persons. It’s a turn-based game: while one team is presenting, other teams are watching."
     },
     "setup": {
       "choose_your_heroes": "Choose your heroes!",
