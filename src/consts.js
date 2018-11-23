@@ -26,9 +26,9 @@ export const SKIPS_RANGE = {
   max: 12,
 };
 
-export const ROUNDS_RANGE = {
-  min: 1,
-  max: 20,
+export const TEAMS_RANGE = {
+  min: 2,
+  max: 10,
 };
 
 export const TIME_RANGE = {

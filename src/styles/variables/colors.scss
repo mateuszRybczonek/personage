@@ -18,13 +18,13 @@ $c-skin: #cdc0b2;
 $c-background: $c-navy;
 $c-background-light: #15185a;
 $c-heading: $c-white;
-$c-text: #de7a22;
+$c-text:  $c-ios-light-grey;
 $c-link: $c-ios-light-grey;
 $c-primary-link: $c-white;
 $c-switch-dot-border: #eee;
 
-$dots-active: #f5e356;;
-$dots-inactive: #3c3e62;
+$dots-active: #f5e356;
+$dots-inactive: $c-ios-dark-grey;
 
 $primary-gradient-start: #f5e356;
 $primary-gradient-end: #cb6318;

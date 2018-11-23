@@ -6,7 +6,7 @@ export default {
   state: {
     skipsLimit: 3,
     timeLimit: 60,
-    roundsLimit: 10,
+    teamsLimit: 2,
     sound: false,
     teamAEmoji: 1,
     teamBEmoji: 9,
@@ -15,15 +15,15 @@ export default {
     isPauseTooltipVisible: true,
   },
   getters: {
-    roundsLimit: state => state.roundsLimit,
+    numberOfTeams: state => state.teamsLimit,
     skipsLimit: state => state.skipsLimit,
     sound: state => state.sound,
     timeLimit: state => state.timeLimit,
     isPauseTooltipVisible: state => state.isPauseTooltipVisible,
   },
   mutations: {
-    setRoundsLimit(state, roundsLimit) {
-      state.roundsLimit = roundsLimit;
+    setTeamsLimit(state, teamsLimit) {
+      state.teamsLimit = teamsLimit;
     },
     setSkipsLimit(state, skipsLimit) {
       state.skipsLimit = skipsLimit;

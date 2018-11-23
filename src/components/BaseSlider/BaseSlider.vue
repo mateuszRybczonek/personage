@@ -100,7 +100,6 @@ export default {
           value: this.currentValue,
           step: this.step,
           onSlide: (value) => {
-            if (this.value !== value) this.$_playSound();
             this.$emit('input', value);
           },
         },
@@ -193,7 +192,7 @@ $rangesliderBoxshadowRight: - $rangesliderMargin + 1px;
     display: block;
     height: 3px;
     border-radius: 10px;
-    background: $c-navy-light;
+    background: $dots-inactive;
   }
 
   .rangeslider__handle {
@@ -214,7 +213,7 @@ $rangesliderBoxshadowRight: - $rangesliderMargin + 1px;
 
   .rangeslider__fill__bg {
     width: 100%;
-    background: $c-navy-light;
+    background: $dots-inactive;
   }
 }
 </style>

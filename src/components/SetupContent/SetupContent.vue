@@ -38,8 +38,8 @@ import BaseSlider from '@/components/BaseSlider/BaseSlider';
 import BaseSwitch from '@/components/BaseSwitch/BaseSwitch';
 import { formatTime, generateRange } from '@/utils/helpers';
 import {
+  TEAMS_RANGE,
   SKIPS_RANGE,
-  ROUNDS_RANGE,
   TIME_RANGE,
 } from '@/consts';
 
@@ -52,8 +52,8 @@ export default {
   computed: {
     ...mapState('settings', [
       'skipsLimit',
+      'teamsLimit',
       'timeLimit',
-      'roundsLimit',
       'sound',
     ]),
 
@@ -61,25 +61,25 @@ export default {
       return [
         this.skipsLimitSlider,
         this.timeLimitSlider,
-        this.roundsLimitSlider,
+        this.teamsLimitSlider,
       ];
     },
 
-    roundsLimitSlider() {
-      const { min, max } = ROUNDS_RANGE;
+    teamsLimitSlider() {
+      const { min, max } = TEAMS_RANGE;
 
       return {
-        inputEvent: this.setRoundsLimit,
-        label: `${this.$t('views.setup.game.rounds')}: ${this.roundsLimit}`,
+        inputEvent: this.setTeamsLimit,
+        label: `${this.$t('views.setup.game.teams')}: ${this.teamsLimit}`,
         min,
         max,
-        name: 'RoundsLimitSlider',
+        name: 'TeamsLimitSlider',
         rangeLabels: [
           { label: min },
           { label: max },
         ],
         step: 1,
-        value: this.roundsLimit,
+        value: this.teamsLimit,
       };
     },
 
@@ -135,7 +135,7 @@ export default {
 
   methods: {
     ...mapMutations('settings', [
-      'setRoundsLimit',
+      'setTeamsLimit',
       'setSkipsLimit',
       'setSound',
       'setTimeLimit',
