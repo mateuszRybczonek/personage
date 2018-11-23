@@ -15,8 +15,10 @@
   },
   "dependencies": {
     "@glidejs/glide": "^3.2.3",
+    "interact.js": "^1.2.8",
     "lottie-web": "^5.4.1",
     "normalize.css": "^8.0.1",
+    "rangeslider-js": "^3.1.2",
     "register-service-worker": "^1.0.0",
     "vue": "^2.5.17",
     "vue-i18n": "^8.3.2",

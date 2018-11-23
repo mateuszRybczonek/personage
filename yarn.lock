@@ -2661,6 +2661,10 @@ currently-unhandled@^0.4.1:
   dependencies:
     array-find-index "^1.0.1"
 
+custom-event@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/custom-event/-/custom-event-1.0.1.tgz#5d02a46850adf1b4a317946a3928fccb5bfd0425"
+
 cyclist@~0.2.2:
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/cyclist/-/cyclist-0.2.2.tgz#1b33792e11e914a2fd6d6ed6447464444e5fa640"
@@ -3417,6 +3421,10 @@ esutils@^2.0.2:
 etag@~1.8.1:
   version "1.8.1"
   resolved "https://registry.yarnpkg.com/etag/-/etag-1.8.1.tgz#41ae2eeb65efa62268aebfea83ac7d79299b0887"
+
+ev-pos@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/ev-pos/-/ev-pos-1.0.1.tgz#8bd7726667dfc3322f7f33e12bfd8a79658f66d0"
 
 event-pubsub@4.3.0:
   version "4.3.0"
@@ -4658,6 +4666,10 @@ inquirer@^6.1.0:
     string-width "^2.1.0"
     strip-ansi "^4.0.0"
     through "^2.3.6"
+
+interact.js@^1.2.8:
+  version "1.2.8"
+  resolved "https://registry.yarnpkg.com/interact.js/-/interact.js-1.2.8.tgz#b62bc004563b5c6f294b6b115b396205d843f60b"
 
 internal-ip@^3.0.1:
   version "3.0.1"
@@ -7591,6 +7603,13 @@ randomfill@^1.0.3:
 range-parser@^1.0.3, range-parser@~1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/range-parser/-/range-parser-1.2.0.tgz#f49be6b487894ddc40dcc94a322f611092e00d5e"
+
+rangeslider-js@^3.1.2:
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/rangeslider-js/-/rangeslider-js-3.1.2.tgz#7ecc4bc55f3eb559eab98c9865eda22748eea413"
+  dependencies:
+    custom-event "^1.0.1"
+    ev-pos "^1.0.1"
 
 raw-body@2.3.3:
   version "2.3.3"
