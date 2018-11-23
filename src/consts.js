@@ -42,9 +42,9 @@ export const $GAME_INCORRECT_ANSWER = 'GAME.INCORRECT_ANSWER';
 export const $GAME_SKIP_CARD = 'GAME.SKIP_CARD';
 
 // Local storage keys
-export const LS_STATE_KEY = 'wordguru:state';
-export const LS_ROUTE_KEY = 'wordguru:route';
-export const LS_LAST_ACTIVITY_AT_KEY = 'wordguru:last-active-at';
+export const LS_STATE_KEY = 'personage:state';
+export const LS_ROUTE_KEY = 'personage:route';
+export const LS_LAST_ACTIVITY_AT_KEY = 'personage:last-active-at';
 
 // URLS
 export const CATEGORIES_URL = '/categories';
