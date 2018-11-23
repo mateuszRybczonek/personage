@@ -21,6 +21,11 @@ export const maxTimeToReturn = 60 * 60 * 1000; // 60 minutes
 export const EASTER_EGG_ENABLED = false;
 
 // Game setup limits
+export const CARDS_RANGE = {
+  min: 10,
+  max: 100,
+};
+
 export const SKIPS_RANGE = {
   min: 0,
   max: 12,

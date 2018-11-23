@@ -4,6 +4,7 @@ const getLastCategories = categories => categories.slice();
 export default {
   namespaced: true,
   state: {
+    cardsLimit: 40,
     skipsLimit: 3,
     timeLimit: 60,
     teamsLimit: 2,
@@ -15,6 +16,7 @@ export default {
     isPauseTooltipVisible: true,
   },
   getters: {
+    cardsLimit: state => state.cardsLimit,
     numberOfTeams: state => state.teamsLimit,
     skipsLimit: state => state.skipsLimit,
     sound: state => state.sound,
@@ -22,6 +24,9 @@ export default {
     isPauseTooltipVisible: state => state.isPauseTooltipVisible,
   },
   mutations: {
+    setCardsLimit(state, cardsLimit) {
+      state.cardsLimit = cardsLimit;
+    },
     setTeamsLimit(state, teamsLimit) {
       state.teamsLimit = teamsLimit;
     },

@@ -66,6 +66,7 @@
     "setup": {
       "choose_your_heroes": "Choose your heroes!",
       "game": {
+        "cards": "Number of cards",
         "teams": "Number of teams",
         "skips_limit": "Skips limit",
         "sound_effects": "Sound effects",

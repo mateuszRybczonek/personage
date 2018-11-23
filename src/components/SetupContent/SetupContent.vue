@@ -38,6 +38,7 @@ import BaseSlider from '@/components/BaseSlider/BaseSlider';
 import BaseSwitch from '@/components/BaseSwitch/BaseSwitch';
 import { formatTime, generateRange } from '@/utils/helpers';
 import {
+  CARDS_RANGE,
   TEAMS_RANGE,
   SKIPS_RANGE,
   TIME_RANGE,
@@ -51,6 +52,7 @@ export default {
 
   computed: {
     ...mapState('settings', [
+      'cardsLimit',
       'skipsLimit',
       'teamsLimit',
       'timeLimit',
@@ -62,7 +64,26 @@ export default {
         this.skipsLimitSlider,
         this.timeLimitSlider,
         this.teamsLimitSlider,
+        this.cardsLimitSlider,
       ];
+    },
+
+    cardsLimitSlider() {
+      const { min, max } = CARDS_RANGE;
+      const labelStep = 30;
+
+      const rangeLabels = generateRange(min, max, labelStep).map(label => ({ label }));
+
+      return {
+        inputEvent: this.setCardsLimit,
+        label: `${this.$t('views.setup.game.cards')}: ${this.cardsLimit}`,
+        min,
+        max,
+        name: 'CardsLimitSlider',
+        rangeLabels,
+        step: 10,
+        value: this.cardsLimit,
+      };
     },
 
     teamsLimitSlider() {
@@ -135,6 +156,7 @@ export default {
 
   methods: {
     ...mapMutations('settings', [
+      'setCardsLimit',
       'setTeamsLimit',
       'setSkipsLimit',
       'setSound',
@@ -154,7 +176,7 @@ export default {
     }
 
     @media #{$mobile-md-v-up} {
-      margin-top: 35px;
+      margin-top: 25px;
 
       &:first-of-type {
         margin-top: 10px;
@@ -167,7 +189,7 @@ export default {
     margin-top: 15px;
 
     @media #{$mobile-md-v-up} {
-      margin-top: 40px;
+      margin-top: 25px;
     }
 
     &Label {
@@ -181,7 +203,7 @@ export default {
       justify-content: space-between;
 
       @media #{$mobile-md-v-up} {
-        font-size: $fs-p;
+        font-size: $fs-small;
       }
     }
   }

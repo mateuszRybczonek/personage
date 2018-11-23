@@ -10,6 +10,7 @@
         data-test="wrapper-go-back-arrow"
         :class="$style.navLink"
         :aria-label="$t('general.go_back')"
+        @click="$_redirect(back)"
       >
         <BackIcon :class="$style.icon" />
       </button>
@@ -24,6 +25,7 @@
         ]"
         :aria-label="$t('general.close')"
         data-test="close-page"
+        @click="$_redirect(close)"
       >
         <CloseIcon :class="$style.icon" />
       </button>
