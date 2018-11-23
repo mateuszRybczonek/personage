@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OnboardingCarouselSlide renders correctly 1`] = `
+<div>
+  <div
+    class=""
+    data-test="animation-container"
+  >
+    <animation-stub
+      data-test="animation"
+      options="[object Object]"
+      path="/mock.json"
+    />
+  </div>
+   
+  <div
+    class=""
+    data-test="content"
+  >
+    <div
+      data-test="title"
+    >
+      
+      This is a title.
+    
+    </div>
+     
+    <div
+      data-test="description"
+    >
+      
+      This is a proper description.
+    
+    </div>
+  </div>
+</div>
+`;
