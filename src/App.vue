@@ -143,7 +143,6 @@ export default {
     border: none;
     border-radius: rem(30px);
     color: $c-heading;
-    animation: slidein 4s ease-out;
     transition: all 0.1s ease-in-out;
     flex: 0 0 auto;
 
