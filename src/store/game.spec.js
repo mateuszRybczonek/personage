@@ -18,17 +18,16 @@ const { mutations, actions, getters } = game;
 
 describe('getters', () => {
   describe('skipsLimitReached', () => {
-    const callSkipsLimitReached = ({ limit: skipsLimit, skipped }) =>
-      getters.skipsLimitReached({
-        currentTeam: 'teamA',
-        teamA: {
-          skipped,
-        },
-      }, null, {
-        settings: {
-          skipsLimit,
-        },
-      });
+    const callSkipsLimitReached = ({ limit: skipsLimit, skipped }) => getters.skipsLimitReached({
+      currentTeam: 'teamA',
+      teamA: {
+        skipped,
+      },
+    }, null, {
+      settings: {
+        skipsLimit,
+      },
+    });
 
     it('returns true if limit has been reached', () => {
       expect(callSkipsLimitReached({

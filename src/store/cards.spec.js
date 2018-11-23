@@ -67,13 +67,12 @@ describe('actions', () => {
     const commit = jest.fn();
     const dispatch = jest.fn();
 
-    global.fetch = jest.fn().mockImplementation(() =>
-      new Promise(resolve => resolve({
-        ok: true,
-        json() {
-          return {};
-        },
-      })));
+    global.fetch = jest.fn().mockImplementation(() => new Promise(resolve => resolve({
+      ok: true,
+      json() {
+        return {};
+      },
+    })));
 
     await actions.loadCards({ commit, dispatch });
 

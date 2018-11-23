@@ -3,7 +3,9 @@
     <main :class="$style.home__content">
       <section :class="$style.home__logo">
         <Logo  :class="$style.home__image" />
-        <span :class="$style.home__title">PERSONAGE</span>
+        <span :class="$style.home__title">
+          {{ $t('title') }}
+        </span>
       </section>
       <button
         class="btn btnPrimary"

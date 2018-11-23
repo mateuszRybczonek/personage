@@ -103,7 +103,7 @@ export default {
             this.$emit('input', value);
           },
         },
-    );
+      );
   },
 
   beforeDestroy() {
@@ -112,8 +112,8 @@ export default {
 
   methods: {
     isValidTextLabel(label) {
-      return (typeof label === 'number' && Number.isFinite(label)) ||
-      (typeof label === 'string' || label instanceof String);
+      return (typeof label === 'number' && Number.isFinite(label))
+        || (typeof label === 'string' || label instanceof String);
     },
     isValidImageLabel(label) {
       return typeof label === 'object' && label.constructor === Object;

@@ -10,12 +10,13 @@
     "test:e2e": "vue-cli-service test:e2e",
     "test:e2e:open": "yarn test:e2e --url http://localhost:8080",
     "lint": "yarn lint:js && yarn lint:css",
-    "lint:js": "eslint src cypress --ext .js,.vue",
+    "lint:js": "eslint src --ext .js,.vue",
     "lint:css": "stylelint '**/*.vue' '**/*.scss' --syntax scss"
   },
   "dependencies": {
     "@glidejs/glide": "^3.2.3",
     "interact.js": "^1.2.8",
+    "jest-context": "^2.1.0",
     "lottie-web": "^5.4.1",
     "normalize.css": "^8.0.1",
     "rangeslider-js": "^3.1.2",

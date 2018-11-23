@@ -1,9 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import createPersistedState from 'vuex-persistedstate';
-
 import { teamA, LS_STATE_KEY } from '@/consts';
-
 import cards from './store/cards';
 import game from './store/game';
 import onboarding from './store/onboarding';

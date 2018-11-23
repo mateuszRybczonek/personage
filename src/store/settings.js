@@ -1,6 +1,3 @@
-const arrEq = (arr1, arr2) => arr1.join(',') === arr2.join(',');
-const getLastCategories = categories => categories.slice();
-
 export default {
   namespaced: true,
   state: {

@@ -3,6 +3,9 @@ module.exports = {
   env: {
     node: true,
   },
+  globals: {
+    context: false,
+  },
   parserOptions: {
     parser: 'babel-eslint',
   },

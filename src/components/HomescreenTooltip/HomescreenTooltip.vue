@@ -55,10 +55,10 @@ export default {
     },
 
     showAddToHomescreenMessage() {
-      return this.showTooltip &&
-        this.isIos &&
-        !this.isInStandaloneMode &&
-        this.isSafari;
+      return this.showTooltip
+        && this.isIos
+        && !this.isInStandaloneMode
+        && this.isSafari;
     },
 
     tooltipArrowVerticalPlacement() {

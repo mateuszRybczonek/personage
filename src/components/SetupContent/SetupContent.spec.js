@@ -17,13 +17,15 @@ const SLIDER_REQUIRED_PROPS = [
 describe('SetupContent', () => {
   const setup = (props = {}) => {
     const getters = {
-      roundsLimit: jest.fn(),
+      cardsLimit: jest.fn(),
+      teamsLimit: jest.fn(),
       skipsLimit: jest.fn(),
       sound: jest.fn(),
       timeLimit: jest.fn(),
     };
 
-    getters.roundsLimit.mockReturnValue(10);
+    getters.cardsLimit.mockReturnValue(40);
+    getters.teamsLimit.mockReturnValue(2);
     getters.skipsLimit.mockReturnValue(3);
     getters.sound.mockReturnValue(false);
     getters.timeLimit.mockReturnValue(60);
@@ -36,7 +38,8 @@ describe('SetupContent', () => {
         settings: {
           namespaced: true,
           state: {
-            roundsLimit: 10,
+            cardsLimit: 40,
+            teamsLimit: 2,
             skipsLimit: 3,
             sound: props.sound || false,
             timeLimit: 60,
@@ -68,8 +71,12 @@ describe('SetupContent', () => {
       expect(wrapper.findAll(BaseSlider).at(1).props().value).toBe(60);
     });
 
-    it('BaseSlider component for roundsLimit with proper value', () => {
-      expect(wrapper.findAll(BaseSlider).at(2).props().value).toBe(10);
+    it('BaseSlider component for teamsLimit with proper value', () => {
+      expect(wrapper.findAll(BaseSlider).at(2).props().value).toBe(2);
+    });
+
+    it('BaseSlider component for cardsLimit with proper value', () => {
+      expect(wrapper.findAll(BaseSlider).at(3).props().value).toBe(40);
     });
 
     it('proper sound value on sound switch label', () => {
@@ -81,12 +88,22 @@ describe('SetupContent', () => {
     });
   });
 
-  describe('roundsLimitSlider', () => {
+  describe('teamsLimitSlider', () => {
     const { wrapper } = setup();
 
     it('has all required props', () => {
       SLIDER_REQUIRED_PROPS.forEach((prop) => {
-        expect(Object.keys(wrapper.vm.roundsLimitSlider)).toContain(prop);
+        expect(Object.keys(wrapper.vm.teamsLimitSlider)).toContain(prop);
+      });
+    });
+  });
+
+  describe('cardsLimitSlider', () => {
+    const { wrapper } = setup();
+
+    it('has all required props', () => {
+      SLIDER_REQUIRED_PROPS.forEach((prop) => {
+        expect(Object.keys(wrapper.vm.cardsLimitSlider)).toContain(prop);
       });
     });
   });
