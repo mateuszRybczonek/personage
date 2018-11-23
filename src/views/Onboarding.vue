@@ -22,6 +22,7 @@
           v-if="isFinished"
           data-test="close-link"
           :class="$style.footerLink"
+          @click="$_redirect({ name: previousRouteName })"
         >
           {{ $t('views.onboarding.close') }}
         </button>
@@ -127,6 +128,7 @@ export default {
 
     gotIt() {
       this.finishOnboarding();
+      this.$_redirect({ name: 'setup' });
     },
   },
 

@@ -137,10 +137,6 @@ $rangesliderBoxshadowRight: - $rangesliderMargin + 1px;
     font-size: $fs-small;
     color: $c-heading;
     justify-content: space-between;
-
-    @media #{$mobile-md-v-up} {
-      font-size: $fs-p;
-    }
   }
 
   &__range {

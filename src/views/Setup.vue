@@ -13,10 +13,11 @@
     >
       <button
         class="btn btnPrimary"
+        @click="$_redirect({ name: 'emojis' })"
       >
         {{ $t('views.setup.choose_your_heroes') }}
       </button>
-      <button>
+      <button @click="$_redirect({ name: 'onboarding' })">
         {{ $t('views.setup.game_rules') }}
       </button>
     </template>
