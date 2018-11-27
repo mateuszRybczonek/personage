@@ -3,8 +3,7 @@ export const cardsApiUrl = 'https://raw.githubusercontent.com/netguru/taboo-db/m
 
 export const categories = ['design', 'it', 'people', 'travel'];
 
-export const emojisForTeamA = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-export const emojisForTeamB = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0];
+export const emojisForTeam = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 export const gameStateReady = 'ready';
 export const gameStatePlaying = 'playing';
@@ -14,6 +13,14 @@ export const gameStateFinished = 'finished';
 
 export const teamA = 'teamA';
 export const teamB = 'teamB';
+export const teamC = 'teamC';
+export const teamD = 'teamD';
+export const teamE = 'teamE';
+export const teamF = 'teamF';
+export const teamG = 'teamG';
+export const teamH = 'teamH';
+export const teamI = 'teamI';
+export const teamJ = 'teamJ';
 
 export const timeoutDelay = 3000;
 export const maxTimeToReturn = 60 * 60 * 1000; // 60 minutes

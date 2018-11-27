@@ -1,16 +1,12 @@
 <template>
   <section :class="$style.container">
     <EmojisCarousel
-      :title="$t('general.team_a')"
+      v-for="team in Object.keys(emojis)"
+      :key="team"
+      :title="team.replace(/([A-Z])/g, ' $1').trim().replace(/^./, (char) => char.toUpperCase())"
       :items="emojisForTeam"
-      :active-item="teamAEmoji"
-      @onChange="handleSetTeamAEmoji"
-    />
-    <EmojisCarousel
-      :title="$t('general.team_b')"
-      :items="emojisForTeam"
-      :active-item="teamBEmoji"
-      @onChange="handleSetTeamBEmoji"
+      :active-item="emojis[team]"
+      @onChange="handleSetTeamEmoji($event, team)"
     />
   </section>
 </template>
@@ -30,20 +26,13 @@ export default {
     };
   },
   computed: {
-    ...mapState('settings', [
-      'teamAEmoji',
-      'teamBEmoji'
-      ]),
+    ...mapState('settings', ['emojis']),
   },
   methods: {
-    ...mapMutations('settings', ['setTeamAEmoji', 'setTeamBEmoji']),
+    ...mapMutations('settings', ['setTeamEmoji']),
 
-    handleSetTeamAEmoji(emoji) {
-      this.setTeamAEmoji(emoji);
-    },
-
-    handleSetTeamBEmoji(emoji) {
-      this.setTeamBEmoji(emoji);
+    handleSetTeamEmoji(emoji, team) {
+      this.setTeamEmoji({ team, emoji });
     },
   },
 };

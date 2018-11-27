@@ -1,7 +1,19 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import createPersistedState from 'vuex-persistedstate';
-import { teamA, LS_STATE_KEY } from '@/consts';
+import {
+  teamA,
+  teamB,
+  teamC,
+  teamD,
+  teamE,
+  teamF,
+  teamG,
+  teamH,
+  teamI,
+  teamJ,
+  LS_STATE_KEY
+} from '@/consts';
 import cards from './store/cards';
 import game from './store/game';
 import onboarding from './store/onboarding';
@@ -22,12 +34,12 @@ export default new Vuex.Store({
     key: LS_STATE_KEY,
     paths: [
       'onboarding.isFinished',
-      'settings.roundsLimit',
+      'settings.cardsLimit',
+      'settings.teamsLimit',
       'settings.skipsLimit',
       'settings.sound',
       'settings.timeLimit',
-      'settings.teamAEmoji',
-      'settings.teamBEmoji',
+      'settings.emojis',
       'settings.selectedCategories',
       'settings.isPauseTooltipVisible',
       'game.currentRound',
@@ -35,6 +47,14 @@ export default new Vuex.Store({
       'game.gameState',
       'game.teamA',
       'game.teamB',
+      'game.teamC',
+      'game.teamD',
+      'game.teamE',
+      'game.teamF',
+      'game.teamG',
+      'game.teamH',
+      'game.teamI',
+      'game.teamJ',
       'cards.allCards',
       'cards.playedCards',
       'cards.currentGameCards',
