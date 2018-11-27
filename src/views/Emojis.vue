@@ -39,7 +39,7 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from 'vuex';
+import { mapState } from 'vuex';
 import BackIcon from '@/assets/back.svg';
 import Wrapper from '@/components/Wrapper/Wrapper';
 import EmojisContent from '@/components/EmojisContent/EmojisContent';
@@ -61,13 +61,13 @@ export default {
     ...mapState('settings', ['emojis']),
 
     teams() {
-      return Object.keys(this.emojis)
+      return Object.keys(this.emojis);
     },
 
     currentTeam() {
       return this.teams[this.currentTeamIndex];
-    }
-  }
+    },
+  },
 };
 </script>
 

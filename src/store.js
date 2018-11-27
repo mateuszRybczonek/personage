@@ -3,16 +3,7 @@ import Vuex from 'vuex';
 import createPersistedState from 'vuex-persistedstate';
 import {
   teamA,
-  teamB,
-  teamC,
-  teamD,
-  teamE,
-  teamF,
-  teamG,
-  teamH,
-  teamI,
-  teamJ,
-  LS_STATE_KEY
+  LS_STATE_KEY,
 } from '@/consts';
 import cards from './store/cards';
 import game from './store/game';

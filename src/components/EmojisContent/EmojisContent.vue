@@ -3,7 +3,7 @@
     <transition name="fade">
       <EmojisCarousel
         :key="currentTeam"
-        :title="currentTeam.replace(/([A-Z])/g, ' $1').trim().replace(/^./, (char) => char.toUpperCase())"
+        :title="formatTeamName(currentTeam)"
         :items="emojisForTeam"
         :active-item="emojis[currentTeam]"
         @onChange="handleSetTeamEmoji($event, currentTeam)"
@@ -44,6 +44,10 @@ export default {
 
     handleSetTeamEmoji(emoji, team) {
       this.setTeamEmoji({ team, emoji });
+    },
+
+    formatTeamName(team) {
+      return team.replace(/([A-Z])/g, ' $1').trim().replace(/^./, char => char.toUpperCase());
     },
   },
 };

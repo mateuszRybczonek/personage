@@ -93,6 +93,7 @@ export default {
   button {
     padding: 0;
     outline: none;
+    -webkit-tap-highlight-color: transparent;
     border: 0;
     background: none;
     cursor: pointer;
@@ -180,7 +181,6 @@ export default {
       }
 
       &:focus {
-        outline: none;
         box-shadow: 0 -1px 10px 0 $primary-gradient-start;
       }
     }

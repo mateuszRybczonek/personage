@@ -44,8 +44,8 @@ export default {
     setTeamsLimit(state, teamsLimit) {
       state.teamsLimit = teamsLimit;
       state.emojis = {
-        teamA: 1,
-        teamB: 1,
+        [teamA]: 1,
+        [teamB]: 1,
       };
 
       if (teamsLimit > 2) {

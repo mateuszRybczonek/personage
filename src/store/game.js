@@ -82,28 +82,28 @@ export default {
     },
     setInitialTeams(state, rootState) {
       if (rootState.settings.teamsLimit > 2) {
-        state.initialState.teamC = { ...initialTeamPayload };
+        state.initialState[teamC] = { ...initialTeamPayload };
       }
       if (rootState.settings.teamsLimit > 3) {
-        state.initialState.teamD = { ...initialTeamPayload };
+        state.initialState[teamD] = { ...initialTeamPayload };
       }
       if (rootState.settings.teamsLimit > 4) {
-        state.initialState.teamE = { ...initialTeamPayload };
+        state.initialState[teamE] = { ...initialTeamPayload };
       }
       if (rootState.settings.teamsLimit > 5) {
-        state.initialState.teamF = { ...initialTeamPayload };
+        state.initialState[teamF] = { ...initialTeamPayload };
       }
       if (rootState.settings.teamsLimit > 6) {
-        state.initialState.teamG = { ...initialTeamPayload };
+        state.initialState[teamG] = { ...initialTeamPayload };
       }
       if (rootState.settings.teamsLimit > 7) {
-        state.initialState.teamH = { ...initialTeamPayload };
+        state.initialState[teamH] = { ...initialTeamPayload };
       }
       if (rootState.settings.teamsLimit > 8) {
-        state.initialState.teamI = { ...initialTeamPayload };
+        state.initialState[teamI] = { ...initialTeamPayload };
       }
       if (rootState.settings.teamsLimit > 9) {
-        state.initialState.teamJ = { ...initialTeamPayload };
+        state.initialState[teamJ] = { ...initialTeamPayload };
       }
 
       return initialState;
