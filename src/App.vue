@@ -132,6 +132,11 @@ export default {
     opacity: 0;
   }
 
+  .is-hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+
   .btn {
     display: block;
     width: 100%;

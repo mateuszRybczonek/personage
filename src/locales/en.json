@@ -13,14 +13,10 @@
     "team_b": "Team B"
   },
   "views": {
-    "categories": {
-      "game_rules": "Game rules",
-      "play": "Play",
-      "title": "Choose categories!"
-    },
     "emojis": {
       "game_rules": "Game rules",
       "next": "Next",
+      "play": "Play",
       "previous": "Previous",
       "title": "Choose your heroes!"
     },

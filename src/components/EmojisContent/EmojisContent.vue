@@ -1,6 +1,6 @@
 <template>
   <section :class="$style.container">
-    <transition name="fade" mode="out-in">
+    <transition name="fade">
       <EmojisCarousel
         :key="currentTeam"
         :title="currentTeam.replace(/([A-Z])/g, ' $1').trim().replace(/^./, (char) => char.toUpperCase())"

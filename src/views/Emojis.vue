@@ -8,12 +8,14 @@
 
     <section :class="$style.controlButtons">
       <button
+        :class="{ 'is-hidden': currentTeamIndex === 0 }"
         @click="currentTeamIndex -= 1"
       >
         <BackIcon :class="$style.icon" />
         {{ $t('views.emojis.previous') }}
       </button>
       <button
+        v-if="currentTeamIndex < teams.length - 1"
         @click="currentTeamIndex += 1"
       >
         {{ $t('views.emojis.next') }}
@@ -22,6 +24,13 @@
     </section>
 
     <template slot="footer">
+      <button
+        class="btn btnPrimary"
+        :class="{ 'is-disabled': currentTeamIndex < teams.length - 1 }"
+        @click="$_redirect({ name: 'game' })"
+      >
+        {{ $t('views.emojis.play') }}
+      </button>
       <button @click="$_redirect({ name: 'onboarding' })">
         {{ $t('views.emojis.game_rules') }}
       </button>
@@ -51,8 +60,12 @@ export default {
   computed: {
     ...mapState('settings', ['emojis']),
 
+    teams() {
+      return Object.keys(this.emojis)
+    },
+
     currentTeam() {
-      return Object.keys(this.emojis)[this.currentTeamIndex];
+      return this.teams[this.currentTeamIndex];
     }
   }
 };
@@ -75,4 +88,3 @@ export default {
     transform: rotateY(180deg);
   }
 </style>
-
