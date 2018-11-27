@@ -15,9 +15,7 @@
   "views": {
     "emojis": {
       "game_rules": "Game rules",
-      "next": "Next",
       "play": "Play",
-      "previous": "Previous",
       "title": "Choose your heroes!"
     },
     "game": {

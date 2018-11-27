@@ -12,13 +12,11 @@
         @click="currentTeamIndex -= 1"
       >
         <BackIcon :class="$style.icon" />
-        {{ $t('views.emojis.previous') }}
       </button>
       <button
         v-if="currentTeamIndex < teams.length - 1"
         @click="currentTeamIndex += 1"
       >
-        {{ $t('views.emojis.next') }}
         <BackIcon :class="$style.nextIcon" />
       </button>
     </section>
@@ -79,11 +77,11 @@ export default {
   }
 
   .icon {
-    @include relative(top 1px left -5px);
+    @include absolute(top 60px left 45px);
   }
 
   .nextIcon {
-    @include relative(top 1px left 5px);
+    @include absolute(top 60px right 45px);
 
     transform: rotateY(180deg);
   }
