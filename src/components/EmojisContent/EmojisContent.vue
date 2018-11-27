@@ -1,13 +1,14 @@
 <template>
   <section :class="$style.container">
-    <EmojisCarousel
-      v-for="team in Object.keys(emojis)"
-      :key="team"
-      :title="team.replace(/([A-Z])/g, ' $1').trim().replace(/^./, (char) => char.toUpperCase())"
-      :items="emojisForTeam"
-      :active-item="emojis[team]"
-      @onChange="handleSetTeamEmoji($event, team)"
-    />
+    <transition name="fade" mode="out-in">
+      <EmojisCarousel
+        :key="currentTeam"
+        :title="currentTeam.replace(/([A-Z])/g, ' $1').trim().replace(/^./, (char) => char.toUpperCase())"
+        :items="emojisForTeam"
+        :active-item="emojis[currentTeam]"
+        @onChange="handleSetTeamEmoji($event, currentTeam)"
+      />
+    </transition>
   </section>
 </template>
 
@@ -20,14 +21,24 @@ export default {
   components: {
     EmojisCarousel,
   },
+
+  props: {
+    currentTeam: {
+      type: String,
+      required: true,
+    },
+  },
+
   data() {
     return {
       emojisForTeam,
     };
   },
+
   computed: {
     ...mapState('settings', ['emojis']),
   },
+
   methods: {
     ...mapMutations('settings', ['setTeamEmoji']),
 

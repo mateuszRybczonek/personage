@@ -119,8 +119,8 @@ export default {
   }
 
   .title {
-    margin: 0;
-    font-size: $fs-h4;
+    margin: 7vh 0 15vh;
+    font-size: $fs-h2;
     color: $c-white;
   }
 

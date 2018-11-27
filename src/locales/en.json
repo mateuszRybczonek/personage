@@ -20,6 +20,8 @@
     },
     "emojis": {
       "game_rules": "Game rules",
+      "next": "Next",
+      "previous": "Previous",
       "title": "Choose your heroes!"
     },
     "game": {

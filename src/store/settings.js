@@ -23,9 +23,10 @@ export default {
       teamA: 1,
       teamB: 1,
     },
+    isFinished: false,
+    isPauseTooltipVisible: true,
     selectedCategories: [],
     toggledCategoriesStack: [],
-    isPauseTooltipVisible: true,
   },
   getters: {
     cardsLimit: state => state.cardsLimit,
@@ -84,6 +85,11 @@ export default {
     setTeamEmoji(state, payload) {
       const { team, emoji } = payload;
       state.emojis[team] = emoji;
+    },
+    setPreviousRouteName(state, routeName) {
+      if (routeName) {
+        state.previousRouteName = routeName;
+      }
     },
     hidePauseTooltip(state) {
       state.isPauseTooltipVisible = false;
