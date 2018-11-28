@@ -1,21 +1,24 @@
 <template>
   <section :class="$style.container">
-    <transition name="fade">
-      <EmojisCarousel
-        :key="currentTeam"
+    <transition-group name="fade" mode="out-in">
+      <div :key="currentTeam">
+        <EmojisCarousel
         :title="formatTeamName(currentTeam)"
         :items="emojisForTeam"
         :active-item="emojis[currentTeam]"
         @onChange="handleSetTeamEmoji($event, currentTeam)"
       />
-    </transition>
-    <div :class="$style.figureContainer">
-      <component
-        :class="$style.figure"
-        :is="figures[ emojis[currentTeam] -1 ]"
-      ></component>
-      <a :class="$style.figureCredits" href="https://www.freepik.com/free-vector/funny-monsters-avatars_764473.htm">Monsters designed by Freepik</a>
-    </div>
+      <div
+        :class="$style.figureContainer"
+      >
+        <component
+          :class="$style.figure"
+          :is="figures[ emojis[currentTeam] -1 ]"
+        ></component>
+        <a :class="$style.figureCredits" href="https://www.freepik.com/free-vector/funny-monsters-avatars_764473.htm">Monsters designed by Freepik</a>
+      </div>
+      </div>
+    </transition-group>
    </section>
 </template>
 
@@ -83,7 +86,7 @@ export default {
 
   .figureContainer {
     display: flex;
-    height: 50%;
+    height: 35vh;
     margin-top: 5vh;
     flex-direction: column;
   }
