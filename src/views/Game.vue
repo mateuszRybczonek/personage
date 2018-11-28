@@ -18,9 +18,9 @@
           v-if="isGameReady"
           key="starter"
           :class="$style.section"
-          :is-team-a-turn="isTeamATurn"
           :current-round="currentRound"
-          :emoji="currentTeamEmoji"
+          :current-team="currentTeam"
+          :emoji="emoji"
           @play="start"
         />
 
@@ -104,10 +104,6 @@ export default {
       'visibleCards',
     ]),
 
-    ...mapGetters([
-      'currentTeamEmoji',
-    ]),
-
     ...mapGetters('cards', [
       'areCardsLoaded',
     ]),
@@ -121,9 +117,17 @@ export default {
       'skipsLimitReached',
     ]),
 
+    ...mapGetters('settings', [
+      'emojis',
+    ]),
+
     showGamePlay() {
       return this.isGamePlaying && this.areCardsLoaded && this.isRunning;
     },
+
+    emoji() {
+      return this.emojis[this.currentTeam];
+    }
   },
 
   watch: {

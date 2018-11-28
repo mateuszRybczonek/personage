@@ -8,17 +8,16 @@
     ]"
     :style="{ transform: transformString }"
   >
-    <Animation
-      data-test="team-emoji"
-      :path="`/anim/emoji/happy/${emoji}.json`"
-      :class="$style.emoji"
-    />
+    <component
+      :class="$style.figure"
+      :is="figures[emoji - 1]"
+    ></component>
     <h2
       data-test="game-starter-team-title"
       :class="$style.title"
     >
-      {{ isTeamATurn ? $t('general.team_a') : $t('general.team_b') }}
-      {{ currentRound === 1 && isTeamATurn ? $t('views.game.begins') : '' }}
+      {{ formatTeamName(currentTeam) }}
+      {{ currentRound === 1 && this.currentTeam === 'teamA' ? $t('views.game.begins') : '' }}
     </h2>
     <div :class="$style.swipeInfo">
       <SwipeIcon :class="$style.swipeIcon" />
@@ -31,20 +30,26 @@
 
 <script>
 import interactMixin from '@/mixins/interact';
-import Animation from '@/components/Animation/Animation';
 import SwipeIcon from '@/assets/swipe.svg';
+import Figure1 from '@/assets/avatars/1-figure.svg'
+import Figure2 from '@/assets/avatars/2-figure.svg'
+import Figure3 from '@/assets/avatars/3-figure.svg'
+import Figure4 from '@/assets/avatars/4-figure.svg'
 
 export default {
   components: {
-    Animation,
     SwipeIcon,
+    Figure1,
+    Figure2,
+    Figure3,
+    Figure4,
   },
 
   mixins: [interactMixin],
 
   props: {
-    isTeamATurn: {
-      type: Boolean,
+    currentTeam: {
+      type: String,
       required: true,
     },
     currentRound: {
@@ -61,6 +66,12 @@ export default {
     return {
       interactLockYAxis: true,
       interactLockSwipeLeft: true,
+      figures: [
+        'Figure1',
+        'Figure2',
+        'Figure3',
+        'Figure4',
+      ]
     };
   },
 
@@ -73,8 +84,13 @@ export default {
 
       setTimeout(() => this.$emit('play'), 100);
     },
+
     draggedLeft() {
       this.interactSetPosition({ x: 0, y: 0, rotation: 0 });
+    },
+
+    formatTeamName(team) {
+      return team.replace(/([A-Z])/g, ' $1').trim().replace(/^./, char => char.toUpperCase());
     },
   },
 };
@@ -92,7 +108,7 @@ export default {
     }
   }
 
-  .emoji {
+  .figure {
     height: 45vh !important;
     padding-top: 20px;
 
