@@ -40,7 +40,7 @@ export default {};
     margin-top: auto;
     font-size: $fs-huge;
     text-transform: uppercase;
-    color: $c-red;
+    color: $primary-gradient-end;
   }
 
   .button {

@@ -128,7 +128,7 @@ export default {
   }
 
   &PathRemaining {
-    stroke: $c-red;
+    stroke: $primary-gradient-end;
     stroke-width: 7px;
     stroke-linecap: round;
     transform: rotate(-125deg);
