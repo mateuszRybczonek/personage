@@ -13,7 +13,7 @@
       >
         <component
           :class="$style.figure"
-          :is="figures[ emojis[currentTeam] -1 ]"
+          :is="figures[emojis[currentTeam]]"
         ></component>
         <a :class="$style.figureCredits" href="https://www.freepik.com/free-vector/funny-monsters-avatars_764473.htm">Monsters designed by Freepik</a>
       </div>

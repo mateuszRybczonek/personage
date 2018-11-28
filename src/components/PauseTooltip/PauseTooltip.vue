@@ -17,7 +17,7 @@
   padding: 10px 0;
   font-size: $fs-ios;
   font-weight: $fw-normal;
-  border: solid 2px $c-navy-light;
+  border: solid 1.5px $c-skin;
   border-radius: 20px;
   color: $c-text;
   background-color: transparent;
@@ -32,7 +32,7 @@
     @include sizing(10px);
     @include absolute(top 0 left 50%);
 
-    border: solid 2px $c-navy-light;
+    border: solid 1.5px $c-skin;
     background: $c-background;
     transform: translateX(-50%) translateY(-50%) rotate(45deg);
   }

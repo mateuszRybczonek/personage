@@ -1,7 +1,7 @@
 /* eslint-disable import/prefer-default-export */
 export const cardsApiUrl = 'https://raw.githubusercontent.com/netguru/taboo-db/master/en.json';
 
-export const emojisForTeam = [1, 2, 3, 4];
+export const emojisForTeam = [0, 1, 2, 3];
 
 export const gameStateReady = 'ready';
 export const gameStatePlaying = 'playing';

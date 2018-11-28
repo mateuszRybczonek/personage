@@ -10,7 +10,7 @@
   >
     <component
       :class="$style.figure"
-      :is="figures[emoji - 1]"
+      :is="figures[emoji]"
     ></component>
     <h2
       data-test="game-starter-team-title"
@@ -100,6 +100,7 @@ export default {
   .container {
     display: flex;
     padding-bottom: 40px;
+    margin-top: 25px;
     flex-direction: column;
     align-items: center;
 

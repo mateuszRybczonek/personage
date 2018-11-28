@@ -2,7 +2,7 @@
   <section>
     <div :class="$style.gameScoreboard">
       <div :class="$style.teamIcon">
-        <component :is="avatars[teamData.emoji - 1]" :class="$style.avatar" ></component>
+        <component :is="avatars[teamData.emoji]" :class="$style.avatar" ></component>
       </div>
       <GameTimer
         :class="$style.timer"
