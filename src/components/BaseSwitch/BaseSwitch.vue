@@ -44,7 +44,6 @@ export default {
       this.$emit('change', value);
     },
     checked(value) {
-      this.$_playSound(value ? 'click' : 'unclick');
       this.value = value;
     },
   },

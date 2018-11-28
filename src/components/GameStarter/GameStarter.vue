@@ -1,0 +1,133 @@
+<template>
+  <div
+    ref="interactElement"
+    data-test="game-starter-container"
+    :class="[
+      $style.container,
+      { [$style.animated]: interactAnimating }
+    ]"
+    :style="{ transform: transformString }"
+  >
+    <Animation
+      data-test="team-emoji"
+      :path="`/anim/emoji/happy/${emoji}.json`"
+      :class="$style.emoji"
+    />
+    <h2
+      data-test="game-starter-team-title"
+      :class="$style.title"
+    >
+      {{ isTeamATurn ? $t('general.team_a') : $t('general.team_b') }}
+      {{ currentRound === 1 && isTeamATurn ? $t('views.game.begins') : '' }}
+    </h2>
+    <div :class="$style.swipeInfo">
+      <SwipeIcon :class="$style.swipeIcon" />
+      <p :class="$style.swipeText">
+        {{ $t('views.game.swipe') }}
+      </p>
+    </div>
+  </div>
+</template>
+
+<script>
+import interactMixin from '@/mixins/interact';
+import Animation from '@/components/Animation/Animation';
+import SwipeIcon from '@/assets/swipe.svg';
+
+export default {
+  components: {
+    Animation,
+    SwipeIcon,
+  },
+
+  mixins: [interactMixin],
+
+  props: {
+    isTeamATurn: {
+      type: Boolean,
+      required: true,
+    },
+    currentRound: {
+      type: Number,
+      required: true,
+    },
+    emoji: {
+      type: Number,
+      required: true,
+    },
+  },
+
+  data() {
+    return {
+      interactLockYAxis: true,
+      interactLockSwipeLeft: true,
+    };
+  },
+
+  methods: {
+    draggedRight() {
+      this.interactUnsetElement();
+      this.interactSetPosition({
+        x: this.interactOutOfSightXCoordinate,
+      });
+
+      setTimeout(() => this.$emit('play'), 100);
+    },
+    draggedLeft() {
+      this.interactSetPosition({ x: 0, y: 0, rotation: 0 });
+    },
+  },
+};
+</script>
+
+<style module lang="scss">
+  .container {
+    display: flex;
+    padding-bottom: 40px;
+    flex-direction: column;
+    align-items: center;
+
+    &.animated {
+      transition: transform 0.5s $ease-out-back;
+    }
+  }
+
+  .emoji {
+    height: 45vh !important;
+    padding-top: 20px;
+
+    :global(svg) {
+      transform: translate3d(0, 0, 0) scale(1.1) !important;
+    }
+  }
+
+  .title {
+    margin: 20px 0 40px;
+    font-size: $fs-h2;
+    color: $c-white;
+
+    @media #{$mobile-md-v-up} {
+      font-size: $fs-h1;
+    }
+  }
+
+  .swipeInfo {
+    margin-top: auto;
+  }
+
+  .swipeText {
+    max-width: 320px;
+    margin: 0;
+    padding: 0;
+    font-size: $fs-h3;
+
+    @media #{$mobile-md-v-up} {
+      font-size: $fs-h2;
+    }
+  }
+
+  .swipeIcon {
+    height: 32px;
+    margin-bottom: 12px;
+  }
+</style>
