@@ -23,8 +23,6 @@ export const teamJ = 'teamJ';
 export const timeoutDelay = 3000;
 export const maxTimeToReturn = 60 * 60 * 1000; // 60 minutes
 
-export const EASTER_EGG_ENABLED = false;
-
 // Game setup limits
 export const CARDS_RANGE = {
   min: 10,
@@ -57,7 +55,6 @@ export const LS_ROUTE_KEY = 'personage:route';
 export const LS_LAST_ACTIVITY_AT_KEY = 'personage:last-active-at';
 
 // URLS
-export const CATEGORIES_URL = '/categories';
 export const EMOJIS_URL = '/emojis';
 export const GAME_URL = '/game';
 export const HOME_URL = '/';
