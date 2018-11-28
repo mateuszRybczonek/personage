@@ -72,16 +72,15 @@ export default {
 <style lang="scss" module>
   .controlButtons {
     display: flex;
-    margin-bottom: 50px;
     justify-content: space-between;
   }
 
   .icon {
-    @include absolute(top 60px left 45px);
+    @include absolute(top 22px left 60px);
   }
 
   .nextIcon {
-    @include absolute(top 60px right 45px);
+    @include absolute(top 22px right 60px);
 
     transform: rotateY(180deg);
   }

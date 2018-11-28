@@ -35,11 +35,7 @@
               data-test="slide"
               @click="goTo(index)"
             >
-              <Animation
-                :path="`/anim/emoji/happy/${emojiName}.json`"
-                :play="emojiName === activeItem"
-                :options="{ autoplay: false }"
-              />
+              <component :is="avatars[index]" :class="$style.avatar" ></component>
             </li>
           </ul>
         </div>
@@ -50,11 +46,17 @@
 
 <script>
 import Glide from '@glidejs/glide';
-import Animation from '@/components/Animation/Animation';
+import Avatar1 from '@/assets/avatars/1-avatar.svg'
+import Avatar2 from '@/assets/avatars/2-avatar.svg'
+import Avatar3 from '@/assets/avatars/3-avatar.svg'
+import Avatar4 from '@/assets/avatars/4-avatar.svg'
 
 export default {
   components: {
-    Animation,
+    Avatar1,
+    Avatar2,
+    Avatar3,
+    Avatar4,
   },
 
   props: {
@@ -70,6 +72,17 @@ export default {
       type: [Number, String],
       default: 0,
     },
+  },
+
+  data() {
+    return {
+      avatars: [
+        'Avatar1',
+        'Avatar2',
+        'Avatar3',
+        'Avatar4',
+      ]
+    };
   },
 
   mounted() {
@@ -111,7 +124,7 @@ export default {
 
 <style module lang="scss">
   .container {
-    margin: 0 -24px 3vh -24px;
+    margin: 0 -24px;
 
     &:last-child {
       margin-bottom: 0;
@@ -119,13 +132,13 @@ export default {
   }
 
   .title {
-    margin: 7vh 0 15vh;
+    margin: 0 0 3vh;
     font-size: $fs-h2;
     color: $c-white;
   }
 
   .sliderContainer {
-    margin: 2vh 0;
+    margin: 0;
 
     @media #{$mobile-sm-down} {
       margin: 0;
@@ -135,10 +148,6 @@ export default {
   .slides {
     height: 20vh;
     margin: 0;
-
-    @media #{$desktop-up} {
-      height: 120px;
-    }
   }
 
   .slide {
@@ -157,5 +166,9 @@ export default {
         transform: scale(1);
       }
     }
+  }
+
+  .avatar {
+    height: 80px;
   }
 </style>
