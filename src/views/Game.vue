@@ -9,6 +9,7 @@
       @pause="pause"
       @resume="resume"
       @timesUp="handleFinishTurn"
+      :current-team="currentTeam"
     />
 
     <main :class="$style.main">
@@ -90,6 +91,7 @@ export default {
   computed: {
     ...mapState('game', [
       'currentRound',
+      'currentTeam',
     ]),
 
     ...mapState('timer', [
@@ -115,18 +117,12 @@ export default {
       'isGamePlaying',
       'isGamePaused',
       'isGameTimedOut',
-      'isTeamATurn',
       'winner',
       'skipsLimitReached',
     ]),
 
     showGamePlay() {
       return this.isGamePlaying && this.areCardsLoaded && this.isRunning;
-    },
-
-    currentTeam() {
-      const translationKey = `general.${this.isTeamATurn ? 'team_a' : 'team_b'}`;
-      return this.$t(translationKey);
     },
   },
 

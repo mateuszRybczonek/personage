@@ -1,12 +1,11 @@
 <template>
   <section>
     <div :class="$style.gameScoreboard">
-      <GameTeamScore
-        :skips-limit="skipsLimit"
-        :team="teamAData"
-        :is-active="isTeamATurn"
-      />
+      <div :class="$style.teamIcon">
+        <component :is="avatars[teamData.emoji]" :class="$style.avatar" ></component>
+      </div>
       <GameTimer
+        :class="$style.timer"
         :time-limit="timeLimit"
         :time-left="timeLeft"
         :game-state="gameState"
@@ -15,10 +14,9 @@
         @timesUp="$emit('timesUp')"
       />
       <GameTeamScore
-        :reverse="true"
+        :class="$style.teamScore"
         :skips-limit="skipsLimit"
-        :team="teamBData"
-        :is-active="isTeamBTurn"
+        :teamData="teamData"
       />
     </div>
     <transition name="t-fade">
@@ -36,48 +34,59 @@ import { mapState, mapGetters } from 'vuex';
 import GameTeamScore from '@/components/GameTeamScore/GameTeamScore';
 import GameTimer from '@/components/GameTimer/GameTimer';
 import PauseTooltip from '@/components/PauseTooltip/PauseTooltip';
+import Avatar1 from '@/assets/avatars/1-avatar.svg'
+import Avatar2 from '@/assets/avatars/2-avatar.svg'
+import Avatar3 from '@/assets/avatars/3-avatar.svg'
+import Avatar4 from '@/assets/avatars/4-avatar.svg'
 
 export default {
   components: {
     GameTeamScore,
     GameTimer,
     PauseTooltip,
+    Avatar1,
+    Avatar2,
+    Avatar3,
+    Avatar4,
+  },
+
+  props: {
+    currentTeam: {
+      type: String,
+      reqiured: true,
+    },
+  },
+
+  data() {
+    return {
+      avatars: [
+        'Avatar1',
+        'Avatar2',
+        'Avatar3',
+        'Avatar4',
+      ]
+    };
   },
 
   computed: {
     ...mapState('settings', [
       'skipsLimit',
       'timeLimit',
-      'teamAEmoji',
-      'teamBEmoji',
     ]),
 
     ...mapState('game', [
       'gameState',
-      'teamA',
-      'teamB',
     ]),
 
-    ...mapGetters('game', ['isTeamATurn', 'isTeamBTurn']),
     ...mapGetters('timer', ['timeLeft']),
-    ...mapGetters('settings', ['isPauseTooltipVisible']),
+    ...mapGetters('settings', ['isPauseTooltipVisible', 'emojis']),
 
-    teamAData() {
-      const { correct, skipped } = this.teamA;
-
-      return {
-        correct,
-        emoji: this.teamAEmoji,
-        skipped,
-      };
-    },
-
-    teamBData() {
-      const { correct, skipped } = this.teamB;
+    teamData() {
+      const { correct, skipped } = this.$store.state.game[this.currentTeam];
 
       return {
         correct,
-        emoji: this.teamBEmoji,
+        emoji: this.emojis[this.currentTeam],
         skipped,
       };
     },
@@ -91,7 +100,21 @@ export default {
   margin-top: -10px;
   padding: 0 10px;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+}
+
+.timer {
+  margin: 0 50px;
+}
+
+.teamIcon {
+  position: relative;
+  width: 60px;
+  margin-top: 10px;
+}
+
+.teamScore {
+  width: 60px;
 }
 
 .pauseTooltip {

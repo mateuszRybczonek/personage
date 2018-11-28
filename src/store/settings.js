@@ -30,6 +30,7 @@ export default {
   },
   getters: {
     cardsLimit: state => state.cardsLimit,
+    emojis: state => state.emojis,
     numberOfTeams: state => state.teamsLimit,
     skipsLimit: state => state.skipsLimit,
     sound: state => state.sound,

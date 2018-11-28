@@ -64,8 +64,6 @@ export default {
     isGamePaused: state => state.gameState === gameStatePaused,
     isGameTimedOut: state => state.gameState === gameStateTimeout,
     isGameFinished: state => state.gameState === gameStateFinished,
-    isTeamATurn: state => state.currentTeam === teamA,
-    isTeamBTurn: state => state.currentTeam === teamB,
     winner: state => calculateWinner(state.teamA, state.teamB),
     skipsLimitReached: (state, getters, rootState) => {
       const { skipsLimit } = rootState.settings;
