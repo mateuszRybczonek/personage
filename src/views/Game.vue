@@ -85,7 +85,7 @@ export default {
     return {
       startTime: Date.now(),
       timeTrackingEnabled: false,
-      timeoutScreenLabelKey: 'views.game.timesup'
+      timeoutScreenLabelKey: 'views.game.timesup',
     };
   },
 

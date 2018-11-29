@@ -22,8 +22,8 @@ export default {
       state.playedCards = [];
     },
 
-    pushCardToPlayedCards(state, keyword) {
-      state.playedCards.push(keyword);
+    pushCardToPlayedCards(state, card) {
+      state.playedCards.push(card);
     },
 
     pushCardToVisibleCards(state, card) {
@@ -78,13 +78,6 @@ export default {
       dispatch('setVisibleCard');
     },
 
-    setInitialCurrentGameCards({ commit, state, rootState }) {
-      const { allCards } = state;
-
-      commit('clearPlayedCards');
-      commit('setCurrentGameCards', shuffleArray(allCards).slice(0, rootState.settings.cardsLimit));
-    },
-
     prepareCardsForNextRound({ commit, dispatch, state }) {
       dispatch('pushVisibleCardToPlayedCards');
       commit('resetCurrentGameCards');
@@ -96,6 +89,13 @@ export default {
       commit('pushCardToCurrentGameCards', state.visibleCards[0]);
       commit('setCurrentGameCards', shuffleArray(state.currentGameCards));
       dispatch('setVisibleCard');
+    },
+
+    setInitialCurrentGameCards({ commit, state, rootState }) {
+      const { allCards } = state;
+
+      commit('clearPlayedCards');
+      commit('setCurrentGameCards', shuffleArray(allCards).slice(0, rootState.settings.cardsLimit));
     },
 
     setVisibleCard({
