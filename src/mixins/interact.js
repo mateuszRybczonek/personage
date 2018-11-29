@@ -43,9 +43,9 @@ export default {
         let x = 0;
 
         const shouldPreventSwipeLeft = (
-          this.interactLockSwipeLeft &&
-          this.interactPosition.x <= 0 &&
-          event.dx < 0
+          this.interactLockSwipeLeft
+            && this.interactPosition.x <= 0
+            && event.dx < 0
         );
 
         if (shouldPreventSwipeLeft) x = 0;
@@ -101,4 +101,3 @@ export default {
     },
   },
 };
-
