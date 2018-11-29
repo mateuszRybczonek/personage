@@ -14,6 +14,7 @@ export default {
 
   getters: {
     areCardsLoaded: state => state.allCards.length > 0,
+    isLastCard: state => state.currentGameCards.length === 0,
   },
 
   mutations: {
@@ -61,8 +62,10 @@ export default {
       }
     },
 
-    loadNextCard({ commit, dispatch, state }) {
-      dispatch('pushVisibleCardToPlayedCards');
+    loadNextCard({ commit, state }, actionType) {
+      if (actionType === 'skipped') commit('pushCardToCurrentGameCards', state.visibleCards[0]);
+      else commit('pushCardToPlayedCards', state.visibleCards[0]);
+
       commit('pushCardToVisibleCards', state.currentGameCards.shift());
     },
 

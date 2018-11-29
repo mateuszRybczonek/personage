@@ -29,7 +29,7 @@
           key="play"
           :class="$style.section"
           :cards="visibleCards"
-          :is-skip-disabled="skipsLimitReached"
+          :is-skip-disabled="skipsLimitReached || isLastCard"
           @correctAnswer="handleCorrectAnswer"
           @incorrectAnswer="handleIncorrectAnswer"
           @cardSkipped="handleCardSkipped"
@@ -109,6 +109,7 @@ export default {
 
     ...mapGetters('cards', [
       'areCardsLoaded',
+      'isLastCard',
     ]),
 
     ...mapGetters('game', [
@@ -130,7 +131,7 @@ export default {
 
     emoji() {
       return this.emojis[this.currentTeam];
-    }
+    },
   },
 
   watch: {
@@ -199,7 +200,7 @@ export default {
 
     handleCardSkipped() {
       this.incrementSkippedCards();
-      this.showNextCard();
+      this.showNextCard('skipped');
     },
 
     async handleCorrectAnswer() {
@@ -209,7 +210,7 @@ export default {
       }
       this.incrementCorrectScore();
       if (this.currentGameCards.length) {
-        this.showNextCard();
+        this.showNextCard('correct');
       } else {
         this.resetTimer();
         this.timeoutScreenLabelKey = 'views.game.end_of_round';
@@ -227,17 +228,20 @@ export default {
       this.completeCurrentTurn();
     },
 
-    handleIncorrectAnswer() {
-      this.incrementIncorrectScore();
-      this.showNextCard();
+    async handleIncorrectAnswer() {
+      this.resetTimer();
+      this.timeoutScreenLabelKey = 'views.game.wrong_answer';
+      this.showTimeout();
+      await waitFor(timeoutDelay);
+      this.completeCurrentTurn();
     },
 
     removeCardFromDeck() {
       this.visibleCards.shift();
     },
 
-    showNextCard() {
-      this.loadNextCard();
+    showNextCard(actionType) {
+      this.loadNextCard(actionType);
       this.enableTimeTracking();
     },
 
