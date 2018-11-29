@@ -35,7 +35,7 @@
               data-test="slide"
               @click="goTo(index)"
             >
-              <component :is="avatars[index]" :class="$style.avatar" ></component>
+              <Component :is="avatars[index]" :class="$style.avatar" />
             </li>
           </ul>
         </div>
@@ -46,10 +46,10 @@
 
 <script>
 import Glide from '@glidejs/glide';
-import Avatar1 from '@/assets/avatars/1-avatar.svg'
-import Avatar2 from '@/assets/avatars/2-avatar.svg'
-import Avatar3 from '@/assets/avatars/3-avatar.svg'
-import Avatar4 from '@/assets/avatars/4-avatar.svg'
+import Avatar1 from '@/assets/avatars/1-avatar.svg';
+import Avatar2 from '@/assets/avatars/2-avatar.svg';
+import Avatar3 from '@/assets/avatars/3-avatar.svg';
+import Avatar4 from '@/assets/avatars/4-avatar.svg';
 
 export default {
   components: {
@@ -81,7 +81,7 @@ export default {
         'Avatar2',
         'Avatar3',
         'Avatar4',
-      ]
+      ],
     };
   },
 

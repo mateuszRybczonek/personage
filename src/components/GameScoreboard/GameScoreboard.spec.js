@@ -9,23 +9,15 @@ import { gameStateReady } from '@/consts';
 
 import GameScoreboard from './GameScoreboard';
 
-jest.mock('lottie-web', () => ({}));
-
 describe('GameScoreboard', () => {
   const setup = () => {
-    const gameGetters = {
-      isTeamATurn: jest.fn(),
-      isTeamBTurn: jest.fn(),
-    };
-
-    gameGetters.isTeamATurn.mockReturnValue(true);
-    gameGetters.isTeamBTurn.mockReturnValue(false);
-
     const settingsGetters = {
       isPauseTooltipVisible: jest.fn(),
+      emojis: jest.fn(),
     };
 
     settingsGetters.isPauseTooltipVisible.mockReturnValue(true);
+    settingsGetters.emojis.mockReturnValue({ teamA: 0 });
 
     const localVue = createLocalVue();
     localVue.use(Vuex);
@@ -40,20 +32,13 @@ describe('GameScoreboard', () => {
               correct: 1,
               skipped: 3,
             },
-            teamB: {
-              correct: 3,
-              skipped: 1,
-            },
           },
-          getters: gameGetters,
         },
         settings: {
           namespaced: true,
           state: {
             skipsLimit: 6,
             timeLimit: 60,
-            teamAEmoji: 0,
-            teamBEmoji: 9,
             isPauseTooltipVisible: true,
           },
           getters: settingsGetters,
@@ -65,6 +50,9 @@ describe('GameScoreboard', () => {
     const wrapper = shallowMount(GameScoreboard, {
       localVue,
       store,
+      propsData: {
+        currentTeam: 'teamA',
+      },
     });
 
     return { wrapper };
@@ -74,7 +62,7 @@ describe('GameScoreboard', () => {
     const { wrapper } = setup();
 
     it('renders with proper number of GameTeamScore components', () => {
-      expect(wrapper.findAll(GameTeamScore)).toHaveLength(2);
+      expect(wrapper.findAll(GameTeamScore)).toHaveLength(1);
     });
 
     it('renders GameTimer component', () => {
@@ -89,22 +77,12 @@ describe('GameScoreboard', () => {
   describe('computed properties', () => {
     const { wrapper } = setup();
 
-    context('teamAData', () => {
+    context('teamData', () => {
       it('returns proper object', () => {
-        expect(wrapper.vm.teamAData).toEqual({
+        expect(wrapper.vm.teamData).toEqual({
           correct: 1,
           emoji: 0,
           skipped: 3,
-        });
-      });
-    });
-
-    context('teamBData', () => {
-      it('returns proper object', () => {
-        expect(wrapper.vm.teamBData).toEqual({
-          correct: 3,
-          emoji: 9,
-          skipped: 1,
         });
       });
     });

@@ -2,7 +2,7 @@
   <section>
     <div :class="$style.gameScoreboard">
       <div :class="$style.teamIcon">
-        <component :is="avatars[teamData.emoji]" :class="$style.avatar" ></component>
+        <Component :is="avatars[teamData.emoji]" :class="$style.avatar" />
       </div>
       <GameTimer
         :class="$style.timer"
@@ -34,10 +34,10 @@ import { mapState, mapGetters } from 'vuex';
 import GameTeamScore from '@/components/GameTeamScore/GameTeamScore';
 import GameTimer from '@/components/GameTimer/GameTimer';
 import PauseTooltip from '@/components/PauseTooltip/PauseTooltip';
-import Avatar1 from '@/assets/avatars/1-avatar.svg'
-import Avatar2 from '@/assets/avatars/2-avatar.svg'
-import Avatar3 from '@/assets/avatars/3-avatar.svg'
-import Avatar4 from '@/assets/avatars/4-avatar.svg'
+import Avatar1 from '@/assets/avatars/1-avatar.svg';
+import Avatar2 from '@/assets/avatars/2-avatar.svg';
+import Avatar3 from '@/assets/avatars/3-avatar.svg';
+import Avatar4 from '@/assets/avatars/4-avatar.svg';
 
 export default {
   components: {
@@ -64,7 +64,7 @@ export default {
         'Avatar2',
         'Avatar3',
         'Avatar4',
-      ]
+      ],
     };
   },
 
@@ -79,7 +79,11 @@ export default {
     ]),
 
     ...mapGetters('timer', ['timeLeft']),
-    ...mapGetters('settings', ['isPauseTooltipVisible', 'emojis']),
+
+    ...mapGetters('settings', [
+      'isPauseTooltipVisible',
+      'emojis',
+    ]),
 
     teamData() {
       const { correct, skipped } = this.$store.state.game[this.currentTeam];
