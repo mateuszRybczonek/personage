@@ -275,6 +275,7 @@ export default {
         dispatch('finishGame');
       } else {
         commit('incrementRound');
+        commit('setCurrentTeam', teamA);
         commit('setGameState', gameStateReady);
       }
     },

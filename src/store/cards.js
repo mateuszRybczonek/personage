@@ -17,7 +17,11 @@ export default {
   },
 
   mutations: {
-    pushKeywordToPlayedCards(state, keyword) {
+    clearPlayedCards(state) {
+      state.playedCards = [];
+    },
+
+    pushCardToPlayedCards(state, keyword) {
       state.playedCards.push(keyword);
     },
 
@@ -29,8 +33,8 @@ export default {
       state.currentGameCards.push(card);
     },
 
-    clearPlayedCards(state) {
-      state.playedCards = [];
+    resetCurrentGameCards(state) {
+      state.currentGameCards = state.playedCards;
     },
 
     setCurrentGameCards(state, value) {
@@ -41,7 +45,7 @@ export default {
       state.allCards = cards;
     },
 
-    setInitialVisibleCards(state, value) {
+    setVisibleCard(state, value) {
       state.visibleCards = value;
     },
   },
@@ -57,26 +61,26 @@ export default {
       }
     },
 
-    loadNextCard({ commit, state, dispatch }) {
-      const {
-        currentGameCards,
-        visibleCards,
-      } = state;
+    loadNextCard({ commit, dispatch, state }) {
+      dispatch('pushVisibleCardToPlayedCards');
+      commit('pushCardToVisibleCards', state.currentGameCards.shift());
+    },
 
-      if (currentGameCards.length) {
-        commit('pushKeywordToPlayedCards', visibleCards[0].keyword);
-        console.log(currentGameCards[0].keyword)
-        commit('pushCardToVisibleCards', currentGameCards.shift());
-      } else {
-        console.log('finish round here');
-        // finish round
-      }
+    pushVisibleCardToCurrentGameCards({ commit, state }) {
+      commit('pushCardToCurrentGameCards', state.visibleCards[0]);
+    },
+
+    pushVisibleCardToPlayedCards({ commit, state }) {
+      commit('pushCardToPlayedCards', state.visibleCards[0]);
     },
 
     prepareInitialCards({ dispatch }) {
-      console.log('prepare cards');
       dispatch('setInitialCurrentGameCards');
-      dispatch('setInitialVisibleCards');
+      dispatch('setVisibleCard');
+    },
+
+    resetCurrentGameCards({ commit }) {
+      commit('resetCurrentGameCards');
     },
 
     setInitialCurrentGameCards({ commit, state, rootState }) {
@@ -86,18 +90,11 @@ export default {
       commit('setCurrentGameCards', shuffleArray(allCards).slice(0, rootState.settings.cardsLimit));
     },
 
-    shuffleCurrentCards({ commit, state, dispatch }) {
-      const {
-        currentGameCards,
-        visibleCards,
-      } = state;
-
-      commit('pushCardToCurrentGameCards', visibleCards[0]);
-      commit('setCurrentGameCards', shuffleArray(currentGameCards));
-      dispatch('setInitialVisibleCards');
+    shuffleCurrentCards({ commit, state }) {
+      commit('setCurrentGameCards', shuffleArray(state.currentGameCards));
     },
 
-    setInitialVisibleCards({
+    setVisibleCard({
       commit,
       getters,
       state,
@@ -107,7 +104,7 @@ export default {
 
       if (!areCardsLoaded) return;
 
-      commit('setInitialVisibleCards', currentGameCards.splice(0, 1));
+      commit('setVisibleCard', currentGameCards.splice(0, 1));
     },
   },
 };

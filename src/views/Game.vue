@@ -42,7 +42,7 @@
           data-test="game-timeout"
           :class="[$style.timeout, $style.section]"
         >
-          {{ $t('views.game.timesup') }}
+          {{ $t(timeoutScreenLabelKey) }}
         </div>
 
         <GamePauseScreen
@@ -85,6 +85,7 @@ export default {
     return {
       startTime: Date.now(),
       timeTrackingEnabled: false,
+      timeoutScreenLabelKey: 'views.game.timesup'
     };
   },
 
@@ -101,7 +102,9 @@ export default {
 
     ...mapState('cards', [
       'allCards',
+      'currentGameCards',
       'visibleCards',
+      'playedCards',
     ]),
 
     ...mapGetters('cards', [
@@ -171,6 +174,7 @@ export default {
     ...mapActions('game', [
       'showTimeout',
       'finishTurn',
+      'nextRound',
       'updateFastestAnswerTime',
     ]),
 
@@ -179,9 +183,13 @@ export default {
     ]),
 
     ...mapActions('cards', [
-      'prepareInitialCards',
       'loadNextCard',
+      'prepareInitialCards',
+      'pushVisibleCardToCurrentGameCards',
+      'pushVisibleCardToPlayedCards',
+      'setVisibleCard',
       'shuffleCurrentCards',
+      'resetCurrentGameCards',
     ]),
 
     ...mapMutations('game', [
@@ -196,16 +204,31 @@ export default {
       this.showNextCard();
     },
 
-    handleCorrectAnswer() {
+    async handleCorrectAnswer() {
       if (this.timeTrackingEnabled) {
         const answerTime = Math.floor((Date.now() - this.startTime) / 1000);
         this.updateFastestAnswerTime(answerTime);
       }
       this.incrementCorrectScore();
-      this.showNextCard();
+      if (this.currentGameCards.length) {
+        this.showNextCard();
+      } else {
+        this.resetTimer();
+        this.timeoutScreenLabelKey = 'views.game.end_of_round';
+        this.showTimeout();
+        await waitFor(timeoutDelay);
+        this.pushVisibleCardToPlayedCards();
+        this.resetCurrentGameCards();
+        this.shuffleCurrentCards();
+        this.setVisibleCard();
+        this.nextRound();
+        console.log(this.currentGameCards)
+        console.log(this.visibleCards)
+      }
     },
 
     async handleFinishTurn() {
+      this.timeoutScreenLabelKey = 'views.game.timesup';
       this.showTimeout();
       await waitFor(timeoutDelay);
       this.completeCurrentTurn();
@@ -238,7 +261,9 @@ export default {
     completeCurrentTurn() {
       this.resetTimer();
       this.finishTurn();
+      this.pushVisibleCardToCurrentGameCards();
       this.shuffleCurrentCards();
+      this.setVisibleCard();
     },
 
     togglePause() {
