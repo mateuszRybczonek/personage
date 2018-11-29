@@ -151,7 +151,7 @@ export default {
       // navigated to this page
       if (from.name) {
         vm.prepareGame();
-        vm.prepareCards();
+        vm.prepareInitialCards();
       } else if (vm.isGameTimedOut) {
         vm.completeCurrentTurn();
       } else {
@@ -179,8 +179,9 @@ export default {
     ]),
 
     ...mapActions('cards', [
-      'prepareCards',
+      'prepareInitialCards',
       'loadNextCard',
+      'shuffleCurrentCards',
     ]),
 
     ...mapMutations('game', [
@@ -205,8 +206,6 @@ export default {
     },
 
     async handleFinishTurn() {
-      this.removeCardFromDeck();
-      this.showNextCard();
       this.showTimeout();
       await waitFor(timeoutDelay);
       this.completeCurrentTurn();
@@ -239,6 +238,7 @@ export default {
     completeCurrentTurn() {
       this.resetTimer();
       this.finishTurn();
+      this.shuffleCurrentCards();
     },
 
     togglePause() {
