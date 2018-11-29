@@ -16,7 +16,7 @@
       data-test="game-starter-team-title"
       :class="$style.title"
     >
-      {{ formatTeamName(currentTeam) }}
+      {{ currentTeam | teamName }}
       {{ currentRound === 1 && this.currentTeam === 'teamA' ? $t('views.game.begins') : '' }}
     </h2>
     <div :class="$style.swipeInfo">
@@ -87,10 +87,6 @@ export default {
 
     draggedLeft() {
       this.interactSetPosition({ x: 0, y: 0, rotation: 0 });
-    },
-
-    formatTeamName(team) {
-      return team.replace(/([A-Z])/g, ' $1').trim().replace(/^./, char => char.toUpperCase());
     },
   },
 };
