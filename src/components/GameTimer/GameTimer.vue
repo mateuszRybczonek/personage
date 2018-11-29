@@ -121,14 +121,14 @@ export default {
   }
 
   &PathElapsed {
-    stroke: $c-navy-light;
+    stroke: $primary-gradient-end;
     stroke-width: 7px;
     stroke-linecap: round;
     fill-rule: nonzero;
   }
 
   &PathRemaining {
-    stroke: $primary-gradient-end;
+    stroke: $primary-gradient-start;
     stroke-width: 7px;
     stroke-linecap: round;
     transform: rotate(-125deg);
