@@ -185,10 +185,8 @@ export default {
     ...mapActions('cards', [
       'loadNextCard',
       'prepareInitialCards',
-      'pushVisibleCardToCurrentGameCards',
-      'pushVisibleCardToPlayedCards',
-      'setVisibleCard',
-      'shuffleCurrentCards',
+      'prepareCardsForNextRound',
+      'prepareCardsForNextTurn',
       'resetCurrentGameCards',
     ]),
 
@@ -217,13 +215,8 @@ export default {
         this.timeoutScreenLabelKey = 'views.game.end_of_round';
         this.showTimeout();
         await waitFor(timeoutDelay);
-        this.pushVisibleCardToPlayedCards();
-        this.resetCurrentGameCards();
-        this.shuffleCurrentCards();
-        this.setVisibleCard();
+        this.prepareCardsForNextRound();
         this.nextRound();
-        console.log(this.currentGameCards)
-        console.log(this.visibleCards)
       }
     },
 
@@ -261,9 +254,7 @@ export default {
     completeCurrentTurn() {
       this.resetTimer();
       this.finishTurn();
-      this.pushVisibleCardToCurrentGameCards();
-      this.shuffleCurrentCards();
-      this.setVisibleCard();
+      this.prepareCardsForNextTurn();
     },
 
     togglePause() {

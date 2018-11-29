@@ -16,7 +16,7 @@ export default {
   state: {
     cardsLimit: 40,
     skipsLimit: 3,
-    timeLimit: 60,
+    timeLimit: 10,
     teamsLimit: 2,
     sound: false,
     emojis: {

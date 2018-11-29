@@ -66,10 +66,6 @@ export default {
       commit('pushCardToVisibleCards', state.currentGameCards.shift());
     },
 
-    pushVisibleCardToCurrentGameCards({ commit, state }) {
-      commit('pushCardToCurrentGameCards', state.visibleCards[0]);
-    },
-
     pushVisibleCardToPlayedCards({ commit, state }) {
       commit('pushCardToPlayedCards', state.visibleCards[0]);
     },
@@ -79,10 +75,6 @@ export default {
       dispatch('setVisibleCard');
     },
 
-    resetCurrentGameCards({ commit }) {
-      commit('resetCurrentGameCards');
-    },
-
     setInitialCurrentGameCards({ commit, state, rootState }) {
       const { allCards } = state;
 
@@ -90,8 +82,17 @@ export default {
       commit('setCurrentGameCards', shuffleArray(allCards).slice(0, rootState.settings.cardsLimit));
     },
 
-    shuffleCurrentCards({ commit, state }) {
+    prepareCardsForNextRound({ commit, dispatch, state }) {
+      dispatch('pushVisibleCardToPlayedCards');
+      commit('resetCurrentGameCards');
       commit('setCurrentGameCards', shuffleArray(state.currentGameCards));
+      dispatch('setVisibleCard');
+    },
+
+    prepareCardsForNextTurn({ commit, dispatch, state }) {
+      commit('pushCardToCurrentGameCards', state.visibleCards[0]);
+      commit('setCurrentGameCards', shuffleArray(state.currentGameCards));
+      dispatch('setVisibleCard');
     },
 
     setVisibleCard({
