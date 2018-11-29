@@ -1,6 +1,6 @@
 <template>
   <section :class="$style.container">
-    <transition-group name="fade" mode="out-in">
+    <TransitionGroup name="fade" mode="out-in">
       <div :key="currentTeam">
         <EmojisCarousel
         :title="formatTeamName(currentTeam)"
@@ -11,14 +11,18 @@
       <div
         :class="$style.figureContainer"
       >
-        <component
+        <Component
           :class="$style.figure"
           :is="figures[ emojis[currentTeam] -1 ]"
-        ></component>
-        <a :class="$style.figureCredits" href="https://www.freepik.com/free-vector/funny-monsters-avatars_764473.htm">Monsters designed by Freepik</a>
+        />
+        <a :class="$style.figureCredits"
+          href="https://www.freepik.com/free-vector/funny-monsters-avatars_764473.htm"
+        >
+          Monsters designed by Freepik
+        </a>
       </div>
       </div>
-    </transition-group>
+    </TransitionGroup>
    </section>
 </template>
 
@@ -26,10 +30,10 @@
 import { mapState, mapMutations } from 'vuex';
 import { emojisForTeam } from '@/consts';
 import EmojisCarousel from '@/components/EmojisCarousel/EmojisCarousel';
-import Figure1 from '@/assets/avatars/1-figure.svg'
-import Figure2 from '@/assets/avatars/2-figure.svg'
-import Figure3 from '@/assets/avatars/3-figure.svg'
-import Figure4 from '@/assets/avatars/4-figure.svg'
+import Figure1 from '@/assets/avatars/1-figure.svg';
+import Figure2 from '@/assets/avatars/2-figure.svg';
+import Figure3 from '@/assets/avatars/3-figure.svg';
+import Figure4 from '@/assets/avatars/4-figure.svg';
 
 export default {
   components: {
@@ -55,7 +59,7 @@ export default {
         'Figure2',
         'Figure3',
         'Figure4',
-      ]
+      ],
     };
   },
 
