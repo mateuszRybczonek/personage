@@ -8,16 +8,15 @@
     ]"
     :style="{ transform: transformString }"
   >
-    <component
+    <Component
       :class="$style.figure"
       :is="figures[emoji]"
-    ></component>
+    />
     <h2
       data-test="game-starter-team-title"
       :class="$style.title"
     >
       {{ currentTeam | teamName }}
-      {{ currentRound === 1 && this.currentTeam === 'teamA' ? $t('views.game.begins') : '' }}
     </h2>
     <div :class="$style.swipeInfo">
       <SwipeIcon :class="$style.swipeIcon" />
@@ -31,10 +30,10 @@
 <script>
 import interactMixin from '@/mixins/interact';
 import SwipeIcon from '@/assets/swipe.svg';
-import Figure1 from '@/assets/avatars/1-figure.svg'
-import Figure2 from '@/assets/avatars/2-figure.svg'
-import Figure3 from '@/assets/avatars/3-figure.svg'
-import Figure4 from '@/assets/avatars/4-figure.svg'
+import Figure1 from '@/assets/avatars/1-figure.svg';
+import Figure2 from '@/assets/avatars/2-figure.svg';
+import Figure3 from '@/assets/avatars/3-figure.svg';
+import Figure4 from '@/assets/avatars/4-figure.svg';
 
 export default {
   components: {
@@ -71,7 +70,7 @@ export default {
         'Figure2',
         'Figure3',
         'Figure4',
-      ]
+      ],
     };
   },
 
@@ -95,8 +94,8 @@ export default {
 <style module lang="scss">
   .container {
     display: flex;
-    padding-bottom: 40px;
     margin-top: 25px;
+    padding-bottom: 40px;
     flex-direction: column;
     align-items: center;
 
