@@ -120,7 +120,11 @@ export default {
         { ...game[teamF], name: game[teamF] ? 'F' : null, emoji: this.emojis[teamF] },
       ];
 
-      return teams.sort((a, b) => (a.correct < b.correct) ? 1 : ((b.correct < a.correct) ? -1 : 0));
+      return teams.sort((a, b) => {
+        if (a.correct < b.correct) return 1;
+        if (b.correct < a.correct) return -1;
+        return 0;
+      });
     },
   },
 
