@@ -117,6 +117,10 @@ export default {
     resetTeams(state, teamsLimit) {
       state[teamA] = { ...initialTeamPayload };
       state[teamB] = { ...initialTeamPayload };
+      state[teamC] = null;
+      state[teamD] = null;
+      state[teamE] = null;
+      state[teamF] = null;
 
       if (teamsLimit > 2) {
         state[teamC] = { ...initialTeamPayload };

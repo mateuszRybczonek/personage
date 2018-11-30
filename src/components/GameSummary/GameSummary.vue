@@ -12,7 +12,7 @@
       :class="$style.title"
       data-test="title"
     >
-      Summary
+      {{ $t('views.summary.title') }}
     </h3>
 
     <div :class="$style.tableHolder">
@@ -35,7 +35,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="team in teams" :key="team">
+          <tr v-for="team in teams" :key="team.name">
             <td data-test="cell-correct">
               <span :class="$style.teamName">
                 {{ team.name }}
@@ -111,7 +111,7 @@ export default {
     teams() {
       const { $store: { state: { game } } } = this;
 
-      return [
+      const teams = [
         { ...game[teamA], name: 'A', emoji: this.emojis[teamA] },
         { ...game[teamB], name: 'B', emoji: this.emojis[teamB] },
         { ...game[teamC], name: game[teamC] ? 'C' : null, emoji: this.emojis[teamC] },
@@ -119,6 +119,8 @@ export default {
         { ...game[teamE], name: game[teamE] ? 'E' : null, emoji: this.emojis[teamE] },
         { ...game[teamF], name: game[teamF] ? 'F' : null, emoji: this.emojis[teamF] },
       ];
+
+      return teams.sort((a, b) => (a.correct < b.correct) ? 1 : ((b.correct < a.correct) ? -1 : 0));
     },
   },
 
