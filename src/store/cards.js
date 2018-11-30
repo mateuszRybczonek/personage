@@ -14,19 +14,28 @@ export default {
 
   getters: {
     areCardsLoaded: state => state.allCards.length > 0,
+    isLastCard: state => state.currentGameCards.length === 0,
   },
 
   mutations: {
-    pushKeywordToPlayedCards(state, keyword) {
-      state.playedCards.push(keyword);
+    clearPlayedCards(state) {
+      state.playedCards = [];
+    },
+
+    pushCardToPlayedCards(state, card) {
+      state.playedCards.push(card);
     },
 
     pushCardToVisibleCards(state, card) {
       state.visibleCards.push(card);
     },
 
-    clearPlayedCards(state) {
-      state.playedCards = [];
+    pushCardToCurrentGameCards(state, card) {
+      state.currentGameCards.push(card);
+    },
+
+    resetCurrentGameCards(state) {
+      state.currentGameCards = state.playedCards;
     },
 
     setCurrentGameCards(state, value) {
@@ -37,7 +46,7 @@ export default {
       state.allCards = cards;
     },
 
-    setVisibleCards(state, value) {
+    setVisibleCard(state, value) {
       state.visibleCards = value;
     },
   },
@@ -53,57 +62,53 @@ export default {
       }
     },
 
-    loadNextCard({ commit, state, dispatch }) {
-      const {
-        currentGameCards,
-        visibleCards,
-        playedCards,
-      } = state;
+    loadNextCard({ commit, state }, actionType) {
+      if (actionType === 'skipped') commit('pushCardToCurrentGameCards', state.visibleCards[0]);
+      else commit('pushCardToPlayedCards', state.visibleCards[0]);
 
-      const keywordsToOmit = new Set([...playedCards, ...visibleCards.map(card => card.keyword)]);
-      const remainingCards = currentGameCards.filter(card => !keywordsToOmit.has(card.keyword));
-
-      if (remainingCards.length) {
-        commit('pushKeywordToPlayedCards', visibleCards[0].keyword);
-        commit('pushCardToVisibleCards', remainingCards[0]);
-      } else {
-        dispatch('resetCurrentGameCards');
-        dispatch('loadNextCard');
-      }
+      commit('pushCardToVisibleCards', state.currentGameCards.shift());
     },
 
-    prepareCards({ dispatch }) {
-      dispatch('setCurrentGameCards');
-      dispatch('setVisibleCards');
+    pushVisibleCardToPlayedCards({ commit, state }) {
+      commit('pushCardToPlayedCards', state.visibleCards[0]);
     },
 
-    resetCurrentGameCards({ commit, dispatch }) {
-      commit('clearPlayedCards');
-      dispatch('setCurrentGameCards');
+    prepareInitialCards({ dispatch }) {
+      dispatch('setInitialCurrentGameCards');
+      dispatch('setVisibleCard');
     },
 
-    setCurrentGameCards({ commit, state, rootState }) {
+    prepareCardsForNextRound({ commit, dispatch, state }) {
+      dispatch('pushVisibleCardToPlayedCards');
+      commit('resetCurrentGameCards');
+      commit('setCurrentGameCards', shuffleArray(state.currentGameCards));
+      dispatch('setVisibleCard');
+    },
+
+    prepareCardsForNextTurn({ commit, dispatch, state }) {
+      commit('pushCardToCurrentGameCards', state.visibleCards[0]);
+      commit('setCurrentGameCards', shuffleArray(state.currentGameCards));
+      dispatch('setVisibleCard');
+    },
+
+    setInitialCurrentGameCards({ commit, state, rootState }) {
       const { allCards } = state;
 
-      const selectedCategoriesCards = allCards
-        .filter(card => rootState.settings.selectedCategories.includes(card.category));
-
-      commit('setCurrentGameCards', shuffleArray(selectedCategoriesCards));
+      commit('clearPlayedCards');
+      commit('setCurrentGameCards', shuffleArray(allCards).slice(0, rootState.settings.cardsLimit));
     },
 
-    setVisibleCards({
+    setVisibleCard({
       commit,
       getters,
       state,
     }) {
-      const { currentGameCards, playedCards } = state;
+      const { currentGameCards } = state;
       const { areCardsLoaded } = getters;
 
       if (!areCardsLoaded) return;
 
-      const remainingCards = currentGameCards.filter(card => !playedCards.includes(card.keyword));
-
-      commit('setVisibleCards', remainingCards.slice(0, 3));
+      commit('setVisibleCard', currentGameCards.splice(0, 1));
     },
   },
 };

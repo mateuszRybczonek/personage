@@ -11,4 +11,6 @@ export default function installFilters(Vue) {
     const INFINITY_SIGN = '∞';
     return value < SKIPS_RANGE.max ? value : INFINITY_SIGN;
   });
+
+  Vue.filter('teamName', team => team.replace(/([A-Z])/g, ' $1').trim().replace(/^./, char => char.toUpperCase()));
 }

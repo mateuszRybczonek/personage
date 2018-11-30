@@ -64,8 +64,6 @@ export default {
     isGamePaused: state => state.gameState === gameStatePaused,
     isGameTimedOut: state => state.gameState === gameStateTimeout,
     isGameFinished: state => state.gameState === gameStateFinished,
-    isTeamATurn: state => state.currentTeam === teamA,
-    isTeamBTurn: state => state.currentTeam === teamB,
     winner: state => calculateWinner(state.teamA, state.teamB),
     skipsLimitReached: (state, getters, rootState) => {
       const { skipsLimit } = rootState.settings;
@@ -77,62 +75,101 @@ export default {
     setGameState(state, gameState) {
       state.gameState = gameState;
     },
+
     setCurrentTeam(state, team) {
       state.currentTeam = team;
     },
-    setInitialTeams(state, rootState) {
-      if (rootState.settings.teamsLimit > 2) {
+
+    setInitialTeams(state, teamsLimit) {
+      if (teamsLimit > 2) {
         state.initialState[teamC] = { ...initialTeamPayload };
       }
-      if (rootState.settings.teamsLimit > 3) {
+      if (teamsLimit > 3) {
         state.initialState[teamD] = { ...initialTeamPayload };
       }
-      if (rootState.settings.teamsLimit > 4) {
+      if (teamsLimit > 4) {
         state.initialState[teamE] = { ...initialTeamPayload };
       }
-      if (rootState.settings.teamsLimit > 5) {
+      if (teamsLimit > 5) {
         state.initialState[teamF] = { ...initialTeamPayload };
       }
-      if (rootState.settings.teamsLimit > 6) {
+      if (teamsLimit > 6) {
         state.initialState[teamG] = { ...initialTeamPayload };
       }
-      if (rootState.settings.teamsLimit > 7) {
+      if (teamsLimit > 7) {
         state.initialState[teamH] = { ...initialTeamPayload };
       }
-      if (rootState.settings.teamsLimit > 8) {
+      if (teamsLimit > 8) {
         state.initialState[teamI] = { ...initialTeamPayload };
       }
-      if (rootState.settings.teamsLimit > 9) {
+      if (teamsLimit > 9) {
         state.initialState[teamJ] = { ...initialTeamPayload };
       }
 
       return initialState;
     },
+
     incrementCorrectScore(state) {
       state[state.currentTeam].correct += 1;
     },
+
     incrementIncorrectScore(state) {
       state[state.currentTeam].incorrect += 1;
     },
+
     incrementRound(state) {
       state.currentRound += 1;
     },
+
     incrementSkippedCards(state) {
       state[state.currentTeam].skipped += 1;
     },
+
     resetGame(state) {
       state.currentRound = 1;
       state.currentTeam = teamA;
-      state.teamA = { ...initialTeamPayload };
-      state.teamB = { ...initialTeamPayload };
     },
+
+    resetTeams(state, teamsLimit) {
+      state[teamA] = { ...initialTeamPayload };
+      state[teamB] = { ...initialTeamPayload };
+
+      if (teamsLimit > 2) {
+        state[teamC] = { ...initialTeamPayload };
+      }
+      if (teamsLimit > 3) {
+        state[teamD] = { ...initialTeamPayload };
+      }
+      if (teamsLimit > 4) {
+        state[teamE] = { ...initialTeamPayload };
+      }
+      if (teamsLimit > 5) {
+        state[teamF] = { ...initialTeamPayload };
+      }
+      if (teamsLimit > 6) {
+        state[teamG] = { ...initialTeamPayload };
+      }
+      if (teamsLimit > 7) {
+        state[teamH] = { ...initialTeamPayload };
+      }
+      if (teamsLimit > 8) {
+        state[teamI] = { ...initialTeamPayload };
+      }
+      if (teamsLimit > 9) {
+        state[teamJ] = { ...initialTeamPayload };
+      }
+
+      return initialState;
+    },
+
     setFastestAnswer(state, fastestAnswer) {
       state[state.currentTeam].fastestAnswer = fastestAnswer;
     },
   },
   actions: {
-    prepareGame({ commit }) {
+    prepareGame({ commit, rootState }) {
       commit('resetGame');
+      commit('resetTeams', rootState.settings.teamsLimit);
       commit('setGameState', gameStateReady);
     },
 
@@ -153,14 +190,88 @@ export default {
       commit('setGameState', gameStateTimeout);
     },
 
-    finishTurn({ commit, dispatch, getters }) {
-      if (getters.isTeamATurn) {
-        commit('setCurrentTeam', teamB);
-        commit('setGameState', gameStateReady);
-      } else {
-        commit('setCurrentTeam', teamA);
-        dispatch('nextRound');
+    finishTurn({
+      commit,
+      state,
+    }) {
+      switch (state.currentTeam) {
+        case teamA: {
+          commit('setCurrentTeam', teamB);
+          break;
+        }
+        case teamB: {
+          if (state[teamC]) {
+            commit('setCurrentTeam', teamC);
+          } else {
+            commit('setCurrentTeam', teamA);
+          }
+          break;
+        }
+        case teamC: {
+          if (state[teamD]) {
+            commit('setCurrentTeam', teamD);
+          } else {
+            commit('setCurrentTeam', teamA);
+          }
+          break;
+        }
+        case teamD: {
+          if (state[teamE]) {
+            commit('setCurrentTeam', teamE);
+          } else {
+            commit('setCurrentTeam', teamA);
+          }
+          break;
+        }
+        case teamE: {
+          if (state[teamF]) {
+            commit('setCurrentTeam', teamF);
+          } else {
+            commit('setCurrentTeam', teamA);
+          }
+          break;
+        }
+        case teamF: {
+          if (state[teamG]) {
+            commit('setCurrentTeam', teamG);
+          } else {
+            commit('setCurrentTeam', teamA);
+          }
+          break;
+        }
+        case teamG: {
+          if (state[teamH]) {
+            commit('setCurrentTeam', teamH);
+          } else {
+            commit('setCurrentTeam', teamA);
+          }
+          break;
+        }
+        case teamH: {
+          if (state[teamI]) {
+            commit('setCurrentTeam', teamI);
+          } else {
+            commit('setCurrentTeam', teamA);
+          }
+          break;
+        }
+        case teamI: {
+          if (state[teamJ]) {
+            commit('setCurrentTeam', teamJ);
+          } else {
+            commit('setCurrentTeam', teamA);
+          }
+          break;
+        }
+        case teamJ: {
+          commit('setCurrentTeam', teamA);
+          break;
+        }
+        default: {
+          break;
+        }
       }
+      commit('setGameState', gameStateReady);
     },
 
     nextRound({
@@ -173,6 +284,7 @@ export default {
         dispatch('finishGame');
       } else {
         commit('incrementRound');
+        commit('setCurrentTeam', teamA);
         commit('setGameState', gameStateReady);
       }
     },

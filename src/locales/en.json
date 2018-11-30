@@ -21,6 +21,8 @@
     "game": {
       "begins": "begins",
       "continue": "Continue game",
+      "end_of_round": "End of round!",
+      "wrong_answer": "WRONG !",
       "new_game": "Start new game",
       "paused": "Game paused",
       "pause_tooltip": "Pause and resume the game by clicking on the counter",

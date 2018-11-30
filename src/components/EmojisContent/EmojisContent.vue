@@ -3,24 +3,24 @@
     <TransitionGroup name="fade" mode="out-in">
       <div :key="currentTeam">
         <EmojisCarousel
-        :title="formatTeamName(currentTeam)"
-        :items="emojisForTeam"
-        :active-item="emojis[currentTeam]"
-        @onChange="handleSetTeamEmoji($event, currentTeam)"
-      />
-      <div
-        :class="$style.figureContainer"
-      >
-        <Component
-          :class="$style.figure"
-          :is="figures[ emojis[currentTeam] -1 ]"
+          :title="currentTeam | teamName"
+          :items="emojisForTeam"
+          :active-item="emojis[currentTeam]"
+          @onChange="handleSetTeamEmoji($event, currentTeam)"
         />
-        <a :class="$style.figureCredits"
-          href="https://www.freepik.com/free-vector/funny-monsters-avatars_764473.htm"
+        <div
+          :class="$style.figureContainer"
         >
-          Monsters designed by Freepik
-        </a>
-      </div>
+          <Component
+            :class="$style.figure"
+            :is="figures[ emojis[currentTeam]]"
+          />
+          <a :class="$style.figureCredits"
+            href="https://www.freepik.com/free-vector/funny-monsters-avatars_764473.htm"
+          >
+            Monsters designed by Freepik
+          </a>
+        </div>
       </div>
     </TransitionGroup>
    </section>
@@ -72,10 +72,6 @@ export default {
 
     handleSetTeamEmoji(emoji, team) {
       this.setTeamEmoji({ team, emoji });
-    },
-
-    formatTeamName(team) {
-      return team.replace(/([A-Z])/g, ' $1').trim().replace(/^./, char => char.toUpperCase());
     },
   },
 };

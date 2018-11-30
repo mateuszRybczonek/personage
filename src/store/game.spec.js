@@ -6,7 +6,7 @@ import {
   gameStateFinished,
 } from '@/consts';
 import router from '@/router';
-import game, { initialState, initialTeamPayload } from './game';
+import game, { initialState } from './game';
 
 jest.useFakeTimers();
 
@@ -152,27 +152,13 @@ describe('mutations', () => {
     const state = {
       ...initialState,
       currentTeam: 'teamB',
-      currentRound: 8,
-      teamA: {
-        correct: 10,
-        incorrect: 2,
-        skipped: 1,
-        fastestAnswer: 20,
-      },
-      teamB: {
-        correct: 5,
-        incorrect: 4,
-        skipped: 0,
-        fastestAnswer: 25,
-      },
+      currentRound: 2,
     };
 
     mutations.resetGame(state);
 
     expect(state.currentRound).toBe(1);
     expect(state.currentTeam).toBe(teamA);
-    expect(state.teamA).toEqual(initialTeamPayload);
-    expect(state.teamB).toEqual(initialTeamPayload);
   });
 
   test('setFastestAnswer', () => {
@@ -191,11 +177,18 @@ describe('mutations', () => {
 
 describe('actions', () => {
   test('prepareGame', () => {
-    const commit = jest.fn();
-    actions.prepareGame({ commit });
+    const rootState = {
+      settings: {
+        teamsLimit: 3,
+      },
+    };
 
-    expect(commit).toHaveBeenCalledTimes(2);
+    const commit = jest.fn();
+    actions.prepareGame({ commit, rootState });
+
+    expect(commit).toHaveBeenCalledTimes(3);
     expect(commit).toHaveBeenCalledWith('resetGame');
+    expect(commit).toHaveBeenCalledWith('resetTeams', 3);
     expect(commit).toHaveBeenCalledWith('setGameState', gameStateReady);
   });
 
@@ -221,31 +214,14 @@ describe('actions', () => {
       actions.finishTurn({
         commit,
         dispatch,
-        getters: {
-          isTeamATurn: true,
+        state: {
+          currentTeam: teamA,
         },
       });
 
       expect(commit).toHaveBeenCalledTimes(2);
       expect(commit).toHaveBeenCalledWith('setCurrentTeam', teamB);
       expect(commit).toHaveBeenCalledWith('setGameState', gameStateReady);
-    });
-
-    test('team B turn', () => {
-      const commit = jest.fn();
-      const dispatch = jest.fn();
-
-      actions.finishTurn({
-        commit,
-        dispatch,
-        getters: {
-          isTeamATurn: false,
-        },
-      });
-
-      expect(commit).toHaveBeenCalledTimes(1);
-      expect(commit).toHaveBeenCalledWith('setCurrentTeam', teamA);
-      expect(dispatch).toHaveBeenCalledWith('nextRound');
     });
   });
 
@@ -267,8 +243,9 @@ describe('actions', () => {
         },
       });
 
-      expect(commit).toHaveBeenCalledTimes(2);
+      expect(commit).toHaveBeenCalledTimes(3);
       expect(commit).toHaveBeenCalledWith('incrementRound');
+      expect(commit).toHaveBeenCalledWith('setCurrentTeam', teamA);
       expect(commit).toHaveBeenCalledWith('setGameState', gameStateReady);
     });
 
