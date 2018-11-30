@@ -5,10 +5,6 @@ import {
   teamD,
   teamE,
   teamF,
-  teamG,
-  teamH,
-  teamI,
-  teamJ,
   gameStateReady,
   gameStatePlaying,
   gameStatePaused,
@@ -93,18 +89,6 @@ export default {
       if (teamsLimit > 5) {
         state.initialState[teamF] = { ...initialTeamPayload };
       }
-      if (teamsLimit > 6) {
-        state.initialState[teamG] = { ...initialTeamPayload };
-      }
-      if (teamsLimit > 7) {
-        state.initialState[teamH] = { ...initialTeamPayload };
-      }
-      if (teamsLimit > 8) {
-        state.initialState[teamI] = { ...initialTeamPayload };
-      }
-      if (teamsLimit > 9) {
-        state.initialState[teamJ] = { ...initialTeamPayload };
-      }
 
       return initialState;
     },
@@ -133,6 +117,10 @@ export default {
     resetTeams(state, teamsLimit) {
       state[teamA] = { ...initialTeamPayload };
       state[teamB] = { ...initialTeamPayload };
+      state[teamC] = null;
+      state[teamD] = null;
+      state[teamE] = null;
+      state[teamF] = null;
 
       if (teamsLimit > 2) {
         state[teamC] = { ...initialTeamPayload };
@@ -145,18 +133,6 @@ export default {
       }
       if (teamsLimit > 5) {
         state[teamF] = { ...initialTeamPayload };
-      }
-      if (teamsLimit > 6) {
-        state[teamG] = { ...initialTeamPayload };
-      }
-      if (teamsLimit > 7) {
-        state[teamH] = { ...initialTeamPayload };
-      }
-      if (teamsLimit > 8) {
-        state[teamI] = { ...initialTeamPayload };
-      }
-      if (teamsLimit > 9) {
-        state[teamJ] = { ...initialTeamPayload };
       }
 
       return initialState;
@@ -232,38 +208,6 @@ export default {
           break;
         }
         case teamF: {
-          if (state[teamG]) {
-            commit('setCurrentTeam', teamG);
-          } else {
-            commit('setCurrentTeam', teamA);
-          }
-          break;
-        }
-        case teamG: {
-          if (state[teamH]) {
-            commit('setCurrentTeam', teamH);
-          } else {
-            commit('setCurrentTeam', teamA);
-          }
-          break;
-        }
-        case teamH: {
-          if (state[teamI]) {
-            commit('setCurrentTeam', teamI);
-          } else {
-            commit('setCurrentTeam', teamA);
-          }
-          break;
-        }
-        case teamI: {
-          if (state[teamJ]) {
-            commit('setCurrentTeam', teamJ);
-          } else {
-            commit('setCurrentTeam', teamA);
-          }
-          break;
-        }
-        case teamJ: {
           commit('setCurrentTeam', teamA);
           break;
         }
@@ -277,10 +221,9 @@ export default {
     nextRound({
       commit,
       state,
-      rootState,
       dispatch,
     }) {
-      if (state.currentRound === rootState.settings.roundsLimit) {
+      if (state.currentRound === 3) {
         dispatch('finishGame');
       } else {
         commit('incrementRound');

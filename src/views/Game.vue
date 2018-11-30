@@ -14,8 +14,15 @@
 
     <main :class="$style.main">
       <transition name="t-fade">
+        <GameSummary
+          v-if="showGameSummary"
+          key="summary"
+          :class="$style.section"
+          @goToNextRound="goToNextRound"
+        />
+
         <GameStarter
-          v-if="isGameReady"
+          v-else-if="isGameReady"
           key="starter"
           :class="$style.section"
           :current-round="currentRound"
@@ -67,6 +74,7 @@ import {
 import GameHeader from '@/components/GameHeader/GameHeader';
 import GameScoreboard from '@/components/GameScoreboard/GameScoreboard';
 import GameStarter from '@/components/GameStarter/GameStarter';
+import GameSummary from '@/components/GameSummary/GameSummary';
 import GamePlay from '@/components/GamePlay/GamePlay';
 import GamePauseScreen from '@/components/GamePauseScreen/GamePauseScreen';
 import { waitFor } from '@/utils/helpers';
@@ -79,12 +87,14 @@ export default {
     GameStarter,
     GamePlay,
     GamePauseScreen,
+    GameSummary,
   },
 
   data() {
     return {
       startTime: Date.now(),
       timeTrackingEnabled: false,
+      showGameSummary: false,
       timeoutScreenLabelKey: 'views.game.timesup',
     };
   },
@@ -123,6 +133,7 @@ export default {
 
     ...mapGetters('settings', [
       'emojis',
+      'teamsLimit',
     ]),
 
     showGamePlay() {
@@ -216,9 +227,14 @@ export default {
         this.timeoutScreenLabelKey = 'views.game.end_of_round';
         this.showTimeout();
         await waitFor(timeoutDelay);
+        this.showGameSummary = true;
         this.prepareCardsForNextRound();
-        this.nextRound();
       }
+    },
+
+    goToNextRound() {
+      this.showGameSummary = false;
+      this.nextRound();
     },
 
     async handleFinishTurn() {

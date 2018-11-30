@@ -258,7 +258,7 @@ describe('actions', () => {
         dispatch,
         rootState,
         state: {
-          currentRound: 4,
+          currentRound: 3,
         },
       });
 

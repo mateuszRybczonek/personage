@@ -81,6 +81,7 @@ export default {
     prepareCardsForNextRound({ commit, dispatch, state }) {
       dispatch('pushVisibleCardToPlayedCards');
       commit('resetCurrentGameCards');
+      commit('clearPlayedCards');
       commit('setCurrentGameCards', shuffleArray(state.currentGameCards));
       dispatch('setVisibleCard');
     },

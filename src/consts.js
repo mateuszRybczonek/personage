@@ -15,10 +15,6 @@ export const teamC = 'teamC';
 export const teamD = 'teamD';
 export const teamE = 'teamE';
 export const teamF = 'teamF';
-export const teamG = 'teamG';
-export const teamH = 'teamH';
-export const teamI = 'teamI';
-export const teamJ = 'teamJ';
 
 export const timeoutDelay = 3000;
 export const maxTimeToReturn = 60 * 60 * 1000; // 60 minutes
@@ -36,7 +32,7 @@ export const SKIPS_RANGE = {
 
 export const TEAMS_RANGE = {
   min: 2,
-  max: 10,
+  max: 6,
 };
 
 export const TIME_RANGE = {

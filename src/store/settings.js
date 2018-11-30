@@ -5,10 +5,6 @@ import {
   teamD,
   teamE,
   teamF,
-  teamG,
-  teamH,
-  teamI,
-  teamJ,
 } from '../consts';
 
 export default {
@@ -60,18 +56,6 @@ export default {
       }
       if (teamsLimit > 5) {
         state.emojis[teamF] = 1;
-      }
-      if (teamsLimit > 6) {
-        state.emojis[teamG] = 1;
-      }
-      if (teamsLimit > 7) {
-        state.emojis[teamH] = 1;
-      }
-      if (teamsLimit > 8) {
-        state.emojis[teamI] = 1;
-      }
-      if (teamsLimit > 9) {
-        state.emojis[teamJ] = 1;
       }
     },
     setSkipsLimit(state, skipsLimit) {
