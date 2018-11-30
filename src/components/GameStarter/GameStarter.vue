@@ -83,10 +83,6 @@ export default {
 
       setTimeout(() => this.$emit('play'), 100);
     },
-
-    draggedLeft() {
-      this.interactSetPosition({ x: 0, y: 0, rotation: 0 });
-    },
   },
 };
 </script>
