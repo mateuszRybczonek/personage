@@ -221,10 +221,9 @@ export default {
     nextRound({
       commit,
       state,
-      rootState,
       dispatch,
     }) {
-      if (state.currentRound === rootState.settings.roundsLimit) {
+      if (state.currentRound === 3) {
         dispatch('finishGame');
       } else {
         commit('incrementRound');

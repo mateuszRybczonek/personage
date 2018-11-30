@@ -13,9 +13,6 @@
       @click="skip"
     >
       <SkipIcon />
-      <span slot="label">
-        {{ $t('views.game.skip') }}
-      </span>
     </GameButton>
 
     <GameButton
