@@ -2,7 +2,6 @@ import {
   card1,
   card2,
   allCardsMock,
-  peopleCards,
 } from '@/utils/mocks';
 import cards from './cards';
 

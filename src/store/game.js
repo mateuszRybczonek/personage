@@ -75,9 +75,11 @@ export default {
     setGameState(state, gameState) {
       state.gameState = gameState;
     },
+
     setCurrentTeam(state, team) {
       state.currentTeam = team;
     },
+
     setInitialTeams(state, teamsLimit) {
       if (teamsLimit > 2) {
         state.initialState[teamC] = { ...initialTeamPayload };
@@ -106,22 +108,28 @@ export default {
 
       return initialState;
     },
+
     incrementCorrectScore(state) {
       state[state.currentTeam].correct += 1;
     },
+
     incrementIncorrectScore(state) {
       state[state.currentTeam].incorrect += 1;
     },
+
     incrementRound(state) {
       state.currentRound += 1;
     },
+
     incrementSkippedCards(state) {
       state[state.currentTeam].skipped += 1;
     },
+
     resetGame(state) {
       state.currentRound = 1;
       state.currentTeam = teamA;
     },
+
     resetTeams(state, teamsLimit) {
       state[teamA] = { ...initialTeamPayload };
       state[teamB] = { ...initialTeamPayload };
@@ -153,6 +161,7 @@ export default {
 
       return initialState;
     },
+
     setFastestAnswer(state, fastestAnswer) {
       state[state.currentTeam].fastestAnswer = fastestAnswer;
     },
