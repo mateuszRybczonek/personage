@@ -1,3 +1,6 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
+const SwPrecachePlugin = require('sw-precache-webpack-plugin');
+
 module.exports = {
   lintOnSave: false,
   css: {
@@ -12,11 +15,30 @@ module.exports = {
     },
   },
 
+  pwa: {
+    name: 'Personage',
+    themeColor: '#0E103C',
+    msTileColor: '#0E103C',
+    appleMobileWebAppStatusBarStyle: 'black-translucent',
+    appleMobileWebAppCapable: 'yes',
+  },
+
   devServer: {
     disableHostCheck: true,
   },
 
   configureWebpack: {
+    plugins: [
+      new SwPrecachePlugin({
+        cacheId: 'Personage',
+        staticFileGlobs: [
+          'dist/**/*.{js,html,css}',
+          'dist/fonts/*.{woff2, woff, ttf}',
+          'dist/sounds/*.mp3',
+        ],
+        stripPrefix: 'dist/',
+      }),
+    ],
     optimization: {
       splitChunks: {
         cacheGroups: {

@@ -1,5 +1,22 @@
 # personage
 
+PWA application in vue.js. Generated with *Vue CLI*
+
+## Stack
+
+| Dependency | Version |
+|-|-|
+| node | >=8.12 |
+| yarn | >=1.3.2 |
+| vue | ^2.5.17 |
+| vue-router | ^3.0.1 |
+| vuex | ^ 3.0.1 |
+| babel | |
+| jest | |
+| cypress | ^2.1.0 |
+
+This project requires `yarn` package manager to be installed.
+
 ## Project setup
 ```
 yarn install
@@ -29,3 +46,9 @@ yarn run test:unit
 ```
 yarn run test:e2e
 ```
+
+## Building for production
+
+```yarn build```
+
+Will create production build in `./dist` directory

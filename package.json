@@ -20,6 +20,7 @@
     "lottie-web": "^5.4.1",
     "normalize.css": "^8.0.1",
     "rangeslider-js": "^3.1.2",
+    "register-service-worker": "^1.5.2",
     "vue": "^2.5.17",
     "vue-i18n": "^8.3.2",
     "vue-router": "^3.0.1",
@@ -48,6 +49,7 @@
     "stylelint-declaration-use-variable": "^1.7.0",
     "stylelint-order": "^2.0.0",
     "stylelint-processor-html": "^1.0.0",
+    "sw-precache-webpack-plugin": "^0.11.5",
     "vue-template-compiler": "^2.5.17"
   }
 }
