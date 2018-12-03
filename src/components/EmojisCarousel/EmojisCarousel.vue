@@ -152,19 +152,12 @@ export default {
 
   .slide {
     opacity: 0.5;
-    transition: opacity 0.2s ease;
-
-    > div {
-      transform: scale(0.8);
-      transition: transform 0.2s ease;
-    }
+    transform: scale(0.6);
+    transition: all 0.4s ease;
 
     &:global(.is-active) {
       opacity: 1;
-
-      > div {
-        transform: scale(1);
-      }
+      transform: scale(1);
     }
   }
 

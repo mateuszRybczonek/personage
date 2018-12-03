@@ -2,7 +2,7 @@
   <div :class="$style.home">
     <main :class="$style.home__content">
       <section :class="$style.home__logo">
-        <img src="@/assets/logo.png" :class="$style.home__image" />
+        <img src="@/assets/logo.png" :class="$style.home__image" alt="Personage logo" />
         <span :class="$style.home__title">
           {{ $t('title') }}
         </span>

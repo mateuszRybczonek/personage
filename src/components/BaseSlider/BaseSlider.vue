@@ -133,7 +133,7 @@ $rangesliderBoxshadowRight: - $rangesliderMargin + 1px;
   &__label {
     display: flex;
     width: 100%;
-    margin-bottom: 10px;
+    margin-bottom: 7px;
     font-size: $fs-small;
     color: $c-heading;
     justify-content: space-between;
