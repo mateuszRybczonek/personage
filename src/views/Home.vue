@@ -2,7 +2,7 @@
   <div :class="$style.home">
     <main :class="$style.home__content">
       <section :class="$style.home__logo">
-        <Logo  :class="$style.home__image" />
+        <img src="@/assets/logo.png" :class="$style.home__image" />
         <span :class="$style.home__title">
           {{ $t('title') }}
         </span>
@@ -19,13 +19,7 @@
 </template>
 
 <script>
-import Logo from '@/assets/logo.svg';
-
 export default {
-  components: {
-    Logo,
-  },
-
   computed: {
     getStartedRouteName() {
       return this.$store.state.onboarding.isFinished
@@ -67,10 +61,8 @@ export default {
     }
 
     &__image {
-      @include sizing(250px);
-      @include relative(top 40px left -10px);
-
-      animation: headAnimation 4s ease-in-out infinite;
+      @include sizing(300px);
+      @include relative(top 60px);
     }
 
     &__title {
