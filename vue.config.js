@@ -33,7 +33,8 @@ module.exports = {
         cacheId: 'Personage',
         staticFileGlobs: [
           'dist/**/*.{js,html,css}',
-          'dist/fonts/*.{woff2, woff, ttf}',
+          'dist/fonts/*.woff2',
+          'dist/img/*.png',
           'dist/sounds/*.mp3',
         ],
         stripPrefix: 'dist/',
