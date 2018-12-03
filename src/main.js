@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import 'normalize.css';
+import './registerServiceWorker';
 
 import AppComponent from './App.vue';
 
