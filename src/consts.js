@@ -57,3 +57,7 @@ export const HOME_URL = '/';
 export const ONBOARDING_URL = '/onboarding';
 export const SETUP_URL = '/setup';
 export const SUMMARY_URL = '/summary';
+
+// SCREEN ORIENTATION
+export const PORTRAIT_PRIMARY = 'portrait-primary';
+export const PORTRAIT_SECONDARY = 'portrait-secondary';

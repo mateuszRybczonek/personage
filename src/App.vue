@@ -3,24 +3,56 @@
     id="app"
     :class="{ 'hurry-up': hurryUp }"
   >
-    <transition name="fade">
+    <transition name="fade" v-if="isPortraitOriented">
       <router-view />
     </transition>
-    <HomescreenTooltip />
+    <HomescreenTooltip v-if="isPortraitOriented"/>
+
+    <OrientationNotice v-else />
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex';
 import HomescreenTooltip from '@/components/HomescreenTooltip/HomescreenTooltip';
+import OrientationNotice from '@/components/OrientationNotice/OrientationNotice';
+import { PORTRAIT_PRIMARY, PORTRAIT_SECONDARY } from '@/consts';
 
 export default {
   components: {
     HomescreenTooltip,
+    OrientationNotice,
+  },
+
+  data() {
+    const { orientation: { type: orientationType } } = window.screen;
+
+    return {
+      windowHeight: 0,
+      isPortraitOriented: orientationType === PORTRAIT_PRIMARY
+        || orientationType === PORTRAIT_SECONDARY,
+    };
   },
 
   computed: {
     ...mapGetters('timer', ['hurryUp', 'timeLeft']),
+  },
+
+  watch: {
+    windowHeight() {
+      const { orientation: { type: orientationType } } = window.screen;
+
+      this.isPortraitOriented = orientationType === PORTRAIT_PRIMARY
+        || orientationType === PORTRAIT_SECONDARY;
+    },
+  },
+
+  mounted() {
+    this.$nextTick(() => {
+      window.addEventListener('resize', () => {
+        this.windowHeight = window.innerHeight;
+      });
+    });
   },
 };
 </script>
