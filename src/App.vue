@@ -16,7 +16,6 @@
 import { mapGetters } from 'vuex';
 import HomescreenTooltip from '@/components/HomescreenTooltip/HomescreenTooltip';
 import OrientationNotice from '@/components/OrientationNotice/OrientationNotice';
-import { PORTRAIT_PRIMARY, PORTRAIT_SECONDARY } from '@/consts';
 
 export default {
   components: {
@@ -25,12 +24,10 @@ export default {
   },
 
   data() {
-    const { orientation: { type: orientationType } } = window.screen;
-
     return {
       windowHeight: 0,
-      isPortraitOriented: orientationType === PORTRAIT_PRIMARY
-        || orientationType === PORTRAIT_SECONDARY,
+      isPortraitOriented: window.orientation === 0,
+      resizeTimeout: null,
     };
   },
 
@@ -38,21 +35,28 @@ export default {
     ...mapGetters('timer', ['hurryUp', 'timeLeft']),
   },
 
-  watch: {
-    windowHeight() {
-      const { orientation: { type: orientationType } } = window.screen;
+  mounted() {
+    this.checkOrientation();
 
-      this.isPortraitOriented = orientationType === PORTRAIT_PRIMARY
-        || orientationType === PORTRAIT_SECONDARY;
-    },
+    this.$nextTick(() => {
+      window.addEventListener('resize', this.resizeThrottler, false);
+    });
   },
 
-  mounted() {
-    this.$nextTick(() => {
-      window.addEventListener('resize', () => {
-        this.windowHeight = window.innerHeight;
-      });
-    });
+  methods: {
+    resizeThrottler() {
+      if (!this.resizeTimeout) {
+        this.resizeTimeout = setTimeout(() => {
+          this.resizeTimeout = null;
+          this.checkOrientation();
+        }, 66);
+      }
+    },
+
+    checkOrientation() {
+      this.isPortraitOriented = (window.innerWidth > 480 && window.innerHeight > 480)
+        || window.orientation === 0;
+    },
   },
 };
 </script>
