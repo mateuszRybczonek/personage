@@ -92,7 +92,11 @@ export default {
   }
 
   .figure {
-    height: 100%;
+    height: 100px;
+
+    @media #{$mobile-lg-v-up} {
+      height: 100%;
+    }
 
     &Credits {
       @include relative(top 15px);

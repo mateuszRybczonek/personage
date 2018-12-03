@@ -17,9 +17,6 @@
       >
         {{ $t('views.setup.choose_your_heroes') }}
       </button>
-      <button @click="$_redirect({ name: 'onboarding' })">
-        {{ $t('views.setup.game_rules') }}
-      </button>
     </template>
   </Wrapper>
 </template>
