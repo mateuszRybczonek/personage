@@ -52,16 +52,6 @@ export default {
     font-weight: $fw-normal;
   }
 
-  @font-face {
-    font-family: $ff-notime;
-    font-display: fallback;
-    src:
-      local('NoTime'),
-      url("#{$font-path}NoTime.ttf") format("truetype");
-    font-style: normal;
-    font-weight: $fw-normal;
-  }
-
   * {
     box-sizing: border-box;
   }

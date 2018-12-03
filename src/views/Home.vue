@@ -64,13 +64,5 @@ export default {
       @include sizing(300px);
       @include relative(top 60px);
     }
-
-    &__title {
-      font-family: $ff-notime;
-      font-size: $fs-huge;
-      font-weight: $fw-bold;
-      letter-spacing: 5px;
-      color: $c-yellow;
-    }
   }
 </style>
