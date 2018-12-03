@@ -1,9 +1,7 @@
 import Vue from 'vue';
 import 'normalize.css';
-import './registerServiceWorker';
 
 import AppComponent from './App.vue';
-import DesktopWrapper from './components/DesktopWrapper/DesktopWrapper.vue';
 
 import installFilters from './filters';
 import router from './router';
@@ -22,9 +20,6 @@ Vue.mixin({
   },
 });
 
-// Up to iPad vertical - display native app
-const App = window.matchMedia('(max-width: 768px)').matches ? AppComponent : DesktopWrapper;
-
 new Vue({
   router,
   store,
@@ -32,5 +27,5 @@ new Vue({
   created() {
     this.$store.dispatch('cards/loadCards');
   },
-  render: h => h(App),
+  render: h => h(AppComponent),
 }).$mount('#app');
