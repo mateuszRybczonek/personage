@@ -49,6 +49,7 @@
     "stylelint-declaration-use-variable": "^1.7.0",
     "stylelint-order": "^2.0.0",
     "stylelint-processor-html": "^1.0.0",
+    "sw-precache-webpack-plugin": "^0.11.5",
     "vue-template-compiler": "^2.5.17"
   }
 }
