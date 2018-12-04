@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@glidejs/glide": "^3.2.3",
+    "howler": "^2.0.15",
     "interact.js": "^1.2.8",
     "jest-context": "^2.1.0",
     "lottie-web": "^5.4.1",
