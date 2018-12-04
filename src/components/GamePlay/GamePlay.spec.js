@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils';
-import { itCards } from '../../utils/mocks';
+import { allCardsMock } from '../../utils/mocks';
 import { testCases } from '../../utils/testUtils';
 import GamePlay from './GamePlay';
 import GameCard from '../GameCard/GameCard';
@@ -8,7 +8,7 @@ describe('GamePlay', () => {
   describe('rendering', () => {
     const wrapper = shallowMount(GamePlay, {
       propsData: {
-        cards: itCards,
+        cards: allCardsMock,
       },
     });
 
@@ -16,10 +16,10 @@ describe('GamePlay', () => {
     const $indicators = wrapper.findAll('[data-test="action-indicator"]');
 
     it('renders all passed cards', () => {
-      expect($cards).toHaveLength(itCards.length);
-      expect($cards.at(0).props('card')).toBe(itCards[0]);
-      expect($cards.at(1).props('card')).toBe(itCards[1]);
-      expect($cards.at(2).props('card')).toBe(itCards[2]);
+      expect($cards).toHaveLength(allCardsMock.length);
+      expect($cards.at(0).props('card')).toBe(allCardsMock[0]);
+      expect($cards.at(1).props('card')).toBe(allCardsMock[1]);
+      expect($cards.at(2).props('card')).toBe(allCardsMock[2]);
     });
 
     it('renders first card with isCurrent prop', () => {
@@ -72,7 +72,7 @@ describe('GamePlay', () => {
     beforeEach(() => {
       wrapper = shallowMount(GamePlay, {
         propsData: {
-          cards: itCards,
+          cards: allCardsMock,
         },
       });
     });
