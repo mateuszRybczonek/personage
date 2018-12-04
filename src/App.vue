@@ -16,6 +16,9 @@
 import { mapGetters } from 'vuex';
 import HomescreenTooltip from '@/components/HomescreenTooltip/HomescreenTooltip';
 import OrientationNotice from '@/components/OrientationNotice/OrientationNotice';
+import { preloadSound } from '@/utils/sounds';
+
+const heartbeatSound = preloadSound('hurry', { loop: true });
 
 export default {
   components: {
@@ -33,6 +36,18 @@ export default {
 
   computed: {
     ...mapGetters('timer', ['hurryUp', 'timeLeft']),
+  },
+
+  watch: {
+    hurryUp(newValue) {
+      if (!this.$store.state.settings.sound) return;
+      if (newValue) {
+        heartbeatSound.play();
+      } else {
+        heartbeatSound.stop();
+        this.$_playSound('timesup');
+      }
+    },
   },
 
   mounted() {
