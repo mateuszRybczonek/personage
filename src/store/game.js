@@ -159,7 +159,6 @@ export default {
 
     finishGame({ commit }) {
       commit('setGameState', gameStateFinished);
-      router.push({ name: 'summary' });
     },
 
     showTimeout({ commit }) {

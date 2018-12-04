@@ -19,6 +19,7 @@
           key="summary"
           :class="$style.section"
           @goToNextRound="goToNextRound"
+          @finishGame="handleFinishGame"
         />
 
         <GameStarter
@@ -44,7 +45,7 @@
         />
 
         <div
-          v-else-if="isGameTimedOut"
+          v-else-if="isGameTimedOut || isGameFinished"
           key="timeout"
           data-test="game-timeout"
           :class="[$style.timeout, $style.section]"
@@ -123,6 +124,7 @@ export default {
     ]),
 
     ...mapGetters('game', [
+      'isGameFinished',
       'isGameReady',
       'isGamePlaying',
       'isGamePaused',
@@ -186,6 +188,7 @@ export default {
     ...mapActions('game', [
       'showTimeout',
       'finishTurn',
+      'finishGame',
       'nextRound',
       'updateFastestAnswerTime',
     ]),
@@ -226,7 +229,11 @@ export default {
       } else {
         this.$_playSound('summary');
         this.resetTimer();
-        this.timeoutScreenLabelKey = 'views.game.end_of_round';
+        if (this.currentRound === 3) {
+          this.timeoutScreenLabelKey = 'views.game.end_of_game';
+        } else {
+          this.timeoutScreenLabelKey = 'views.game.end_of_round';
+        }
         this.showTimeout();
         await waitFor(timeoutDelay);
         this.showGameSummary = true;
@@ -237,6 +244,12 @@ export default {
     goToNextRound() {
       this.showGameSummary = false;
       this.nextRound();
+    },
+
+    handleFinishGame() {
+      this.showGameSummary = false;
+      this.$_redirectWithSound({ name: 'setup' });
+      this.setGameState(gameStateReady);
     },
 
     async handleFinishTurn() {
@@ -328,5 +341,6 @@ export default {
   margin: auto;
   font-size: $fs-huge;
   color: $c-red;
+  flex-direction: column;
 }
 </style>

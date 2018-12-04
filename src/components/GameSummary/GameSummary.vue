@@ -61,15 +61,6 @@
         </tbody>
       </table>
     </div>
-    <div :class="$style.summaryControls">
-      <button
-        v-if="currentRound === 3"
-        class="btn btnPrimary"
-        @click="$_redirectWithSound({ name: 'setup' })"
-      >
-        {{ $t('views.summary.new_game') }}
-      </button>
-    </div>
   </div>
 </template>
 
@@ -145,7 +136,10 @@ export default {
         x: this.interactOutOfSightXCoordinate,
       });
 
-      setTimeout(() => this.$emit('goToNextRound'), 100);
+      setTimeout(() => {
+        if (this.currentRound === 3) this.$emit('finishGame');
+        else this.$emit('goToNextRound')
+      }, 100);
     },
   },
 };
@@ -207,5 +201,9 @@ export default {
   .summaryControls {
     display: flex;
     justify-content: center;
+  }
+
+  .newGameButton {
+    max-width: 250px;
   }
 </style>
