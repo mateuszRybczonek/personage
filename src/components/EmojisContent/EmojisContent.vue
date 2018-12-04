@@ -71,6 +71,7 @@ export default {
     ...mapMutations('settings', ['setTeamEmoji']),
 
     handleSetTeamEmoji(emoji, team) {
+      this.$_playSound('paperTurnPage');
       this.setTeamEmoji({ team, emoji });
     },
   },

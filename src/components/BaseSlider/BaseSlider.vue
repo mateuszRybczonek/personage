@@ -100,6 +100,7 @@ export default {
           value: this.currentValue,
           step: this.step,
           onSlide: (value) => {
+            if (this.value !== value) this.$_playSound();
             this.$emit('input', value);
           },
         },

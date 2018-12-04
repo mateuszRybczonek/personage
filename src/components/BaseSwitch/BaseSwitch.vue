@@ -41,6 +41,7 @@ export default {
 
   watch: {
     value(value) {
+      this.$_playSound('click');
       this.$emit('change', value);
     },
     checked(value) {

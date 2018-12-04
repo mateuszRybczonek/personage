@@ -30,6 +30,7 @@ export default {
 
   methods: {
     getStarted() {
+      this.$_playSound();
       this.$router.push({ name: this.getStartedRouteName });
     },
   },

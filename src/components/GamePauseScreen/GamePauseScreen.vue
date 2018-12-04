@@ -16,7 +16,7 @@
     </button>
     <button
       data-test="new-game-link"
-      @click="$_redirect({ name: 'setup' })"
+      @click="$_redirectWithSound({ name: 'setup' })"
     >
       {{ $t('views.game.new_game') }}
     </button>

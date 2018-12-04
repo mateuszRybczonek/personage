@@ -61,6 +61,15 @@
         </tbody>
       </table>
     </div>
+    <div :class="$style.summaryControls">
+      <button
+        v-if="currentRound === 3"
+        class="btn btnPrimary"
+        @click="$_redirectWithSound({ name: 'setup' })"
+      >
+        {{ $t('views.summary.new_game') }}
+      </button>
+    </div>
   </div>
 </template>
 
@@ -107,6 +116,7 @@ export default {
 
   computed: {
     ...mapState('settings', ['emojis']),
+    ...mapState('game', ['currentRound']),
 
     teams() {
       const { $store: { state: { game } } } = this;
@@ -192,5 +202,10 @@ export default {
 
   .teamName {
     @include relative(right 5px bottom 8px);
+  }
+
+  .summaryControls {
+    display: flex;
+    justify-content: center;
   }
 </style>

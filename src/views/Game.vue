@@ -219,10 +219,12 @@ export default {
         const answerTime = Math.floor((Date.now() - this.startTime) / 1000);
         this.updateFastestAnswerTime(answerTime);
       }
+      this.$_playSound('correct');
       this.incrementCorrectScore();
       if (this.currentGameCards.length) {
         this.showNextCard('correct');
       } else {
+        this.$_playSound('summary');
         this.resetTimer();
         this.timeoutScreenLabelKey = 'views.game.end_of_round';
         this.showTimeout();
@@ -245,6 +247,7 @@ export default {
     },
 
     async handleIncorrectAnswer() {
+      this.$_playSound('incorrect');
       this.resetTimer();
       this.timeoutScreenLabelKey = 'views.game.wrong_answer';
       this.showTimeout();
@@ -283,14 +286,17 @@ export default {
     },
 
     start() {
+      this.$_playSound('turnStart');
       this.startGame();
     },
 
     pause() {
+      this.$_playSound('pause');
       this.pauseGame();
     },
 
     resume() {
+      this.$_playSound('resume');
       if (this.timePassed === 0) this.setGameState(gameStateReady);
       else this.startGame();
     },

@@ -2,11 +2,16 @@ import { shallowMount } from '@vue/test-utils';
 import BaseSwitch from './BaseSwitch';
 
 describe('BaseSwitch', () => {
+  const playSound = jest.fn();
+
   const setup = () => {
     const wrapper = shallowMount(BaseSwitch, {
       propsData: {
         checked: false,
         name: 'switch',
+      },
+      mocks: {
+        $_playSound: playSound,
       },
     });
 
