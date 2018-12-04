@@ -1,7 +1,7 @@
 import Vue from 'vue';
-import { cardsApiUrl } from '@/consts';
 import { serializeCards } from '@/utils/serializer';
 import { shuffleArray } from '@/utils/helpers';
+import questions from '@/questions/en';
 
 export default {
   namespaced: true,
@@ -53,13 +53,15 @@ export default {
 
   actions: {
     async loadCards({ commit }) {
-      try {
-        const response = await fetch(cardsApiUrl);
-        const cards = await response.json();
-        commit('setAllCards', serializeCards(cards));
-      } catch (err) {
-        Vue.rollbar.error('Error while fetching & serializing cards', err);
-      }
+      commit('setAllCards', questions);
+
+      // try {
+      //   const response = await fetch(cardsApiUrl);
+      //   const cards = await response.json();
+      //   commit('setAllCards', serializeCards(questions));
+      // } catch (err) {
+      //   Vue.rollbar.error('Error while fetching & serializing cards', err);
+      // }
     },
 
     loadNextCard({ commit, state }, actionType) {
