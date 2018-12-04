@@ -18,7 +18,7 @@
           <a :class="$style.figureCredits"
             href="https://www.freepik.com/free-vector/funny-monsters-avatars_764473.htm"
           >
-            Monsters designed by Freepik
+            {{ $t('general.freepik_credit') }}
           </a>
         </div>
       </div>

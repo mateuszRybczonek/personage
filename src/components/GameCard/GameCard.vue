@@ -12,17 +12,8 @@
   >
     <div>
       <h3 :class="$style.cardTitle">
-        {{ card.keyword }}
+        {{ card }}
       </h3>
-      <ul :class="$style.cardWordsList">
-        <li
-          v-for="word in card.forbiddenWords"
-          :key="word"
-          data-test="forbidden-word"
-        >
-          {{ word }}
-        </li>
-      </ul>
     </div>
   </div>
 </template>
@@ -40,7 +31,7 @@ export default {
   mixins: [interactMixin],
   props: {
     card: {
-      type: Object,
+      type: String,
       required: true,
     },
     isCurrent: {

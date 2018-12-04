@@ -6,7 +6,7 @@
     <div :class="$style.cards">
       <GameCard
         v-for="(card, index) in cards"
-        :key="card.keyword"
+        :key="card"
         :card="card"
         :is-current="index === 0"
         :is-skip-disabled="isSkipDisabled"
