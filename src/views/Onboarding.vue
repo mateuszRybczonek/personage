@@ -90,23 +90,23 @@ export default {
       slides: [{
         title: this.$t('views.onboarding_team.title'),
         description: this.$t('views.onboarding_team.description'),
-        animation: '',
+        image: 'onboarding-1',
       }, {
         title: this.$t('views.onboarding_round_1.title'),
         description: this.$t('views.onboarding_round_1.description'),
-        animation: '',
+        image: 'onboarding-1',
       }, {
         title: this.$t('views.onboarding_round_2.title'),
         description: this.$t('views.onboarding_round_2.description'),
-        animation: '',
+        image: 'onboarding-1',
       }, {
         title: this.$t('views.onboarding_round_3.title'),
         description: this.$t('views.onboarding_round_3.description'),
-        animation: '',
+        image: 'onboarding-1',
       }, {
         title: this.$t('views.onboarding_points.title'),
         description: this.$t('views.onboarding_points.description'),
-        animation: '',
+        image: 'onboarding-1',
       }],
     };
   },

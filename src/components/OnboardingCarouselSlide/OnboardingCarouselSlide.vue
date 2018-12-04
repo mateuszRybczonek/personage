@@ -1,24 +1,15 @@
 <template>
   <div :class="$style.container">
-    <div
-      data-test="animation-container"
-      :class="[$style.animation, {
-        'is-visible': playAnimation,
-      }]"
-    >
-      <Animation
-        data-test="animation"
-        :class="$style.animationItem"
-        :path="animation"
-        :play="playAnimation"
-        :options="{ autoplay: false }"
+    <div :class="$style.imageContainer">
+      <img
+        data-test="image"
+        :src="require(`@/assets/${image}.png`)"
+        :class="$style.image"
       />
     </div>
     <div
       data-test="content"
-      :class="[$style.content, {
-        'is-visible': playAnimation,
-      }]"
+      :class="$style.content"
     >
       <div
         :class="$style.title"
@@ -37,12 +28,8 @@
 </template>
 
 <script>
-import Animation from '@/components/Animation/Animation';
 
 export default {
-  components: {
-    Animation,
-  },
   props: {
     title: {
       type: String,
@@ -52,13 +39,9 @@ export default {
       type: String,
       required: true,
     },
-    animation: {
+    image: {
       type: String,
       required: true,
-    },
-    playAnimation: {
-      type: Boolean,
-      default: false,
     },
   },
 };
@@ -67,38 +50,20 @@ export default {
 <style module lang="scss">
   .container {
     display: flex;
-    height: 100%;
-    padding: 0 30px;
     flex-direction: column;
+    justify-content: center;
+    height: 75%;
+    padding: 0 30px;
   }
 
-  .animation {
-    height: 202px;
+  .image {
     margin-top: auto;
-    opacity: 0;
-    transform: scale(0.8) translate3d(0, 0, 0);
-    transition: opacity 0.6s ease, transform $ease-in-out 0.6s;
-
-    &:global(.is-visible) {
-      opacity: 1;
-      transform: scale(1) translate3d(0, 0, 0);
-    }
-
-    @media #{$mobile-md-v-up} {
-      height: 45vh;
-    }
+    width: 100%;
   }
 
   .content {
-    margin-top: auto;
-    opacity: 0;
+    opacity: 1;
     transform: translateY(40px);
-    transition: opacity 0.6s ease, transform ease 0.6s;
-
-    &:global(.is-visible) {
-      opacity: 1;
-      transform: translateY(0);
-    }
 
     @media #{$mobile-sm-down} {
       display: flex;

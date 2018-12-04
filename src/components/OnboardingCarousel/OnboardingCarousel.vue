@@ -12,14 +12,13 @@
           class="glide__slides"
         >
           <OnboardingCarouselSlide
-            v-for="(slide, index) in slides"
+            v-for="slide in slides"
             :key="slide.title"
             class="glide__slide"
             data-test="slide"
             :title="slide.title"
             :description="slide.description"
-            :animation="slide.animation"
-            :play-animation="index === activeSlideIndex"
+            :image="slide.image"
           />
         </div>
       </div>
