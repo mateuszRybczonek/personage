@@ -50,15 +50,15 @@ export default {
 <style module lang="scss">
   .container {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     height: 75%;
     padding: 0 30px;
+    flex-direction: column;
+    justify-content: center;
   }
 
   .image {
-    margin-top: auto;
     width: 100%;
+    margin-top: auto;
   }
 
   .content {

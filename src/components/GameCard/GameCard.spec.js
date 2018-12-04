@@ -7,10 +7,7 @@ describe('GameCard', () => {
   const setup = (props) => {
     const wrapper = shallowMount(GameCard, {
       propsData: {
-        card: {
-          keyword: 'Server',
-          forbiddenWords: ['Deploy', 'Machine', 'Application', 'Cloud'],
-        },
+        card: 'Sly',
         isCurrent: true,
         ...props,
       },
@@ -23,15 +20,7 @@ describe('GameCard', () => {
     const { wrapper } = setup();
 
     it('with keyword', () => {
-      expect(wrapper.text()).toContain('Server');
-    });
-
-    it('with forbidden words', () => {
-      expect(wrapper.findAll('[data-test="forbidden-word"]')).toHaveLength(4);
-      expect(wrapper.text()).toContain('Deploy');
-      expect(wrapper.text()).toContain('Machine');
-      expect(wrapper.text()).toContain('Application');
-      expect(wrapper.text()).toContain('Cloud');
+      expect(wrapper.text()).toContain('Sly');
     });
   });
 

@@ -1,5 +1,3 @@
-import Vue from 'vue';
-import { serializeCards } from '@/utils/serializer';
 import { shuffleArray } from '@/utils/helpers';
 import questions from '@/questions/en';
 

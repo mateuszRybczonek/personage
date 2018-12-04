@@ -1,22 +1,18 @@
 import { shallowMount } from '@vue/test-utils';
 import OnboardingCarousel from '@/components/OnboardingCarousel/OnboardingCarousel';
 
-jest.mock('lottie-web', () => ({
-  loadAnimation: jest.fn(),
-}));
-
 const slides = [{
   title: 'Lorem',
   description: 'desc1',
-  animation: '/anim/1.json',
+  image: 'onboarding',
 }, {
   title: 'Ipsum',
   description: 'desc2',
-  animation: '/anim/2.json',
+  image: 'onboarding',
 }, {
   title: 'Dolor',
   description: 'desc3',
-  animation: '/anim/3.json',
+  image: 'onboarding',
 }];
 
 describe('OnboardingCarousel', () => {
@@ -31,28 +27,25 @@ describe('OnboardingCarousel', () => {
     expect(wrapper.findAll('[data-test="slide"]').length).toBe(3);
   });
 
-  it('renders active slide with enabled animation', () => {
+  it('renders active slide', () => {
     expect(wrapper.findAll('[data-test="slide"]').at(0).props()).toEqual({
-      animation: slides[0].animation,
+      image: slides[0].image,
       title: slides[0].title,
       description: slides[0].description,
-      playAnimation: true,
     });
   });
 
-  it('renders other slides with disabled animation', () => {
+  it('renders other slides', () => {
     expect(wrapper.findAll('[data-test="slide"]').at(1).props()).toEqual({
-      animation: slides[1].animation,
+      image: slides[1].image,
       title: slides[1].title,
       description: slides[1].description,
-      playAnimation: false,
     });
 
     expect(wrapper.findAll('[data-test="slide"]').at(2).props()).toEqual({
-      animation: slides[2].animation,
+      image: slides[2].image,
       title: slides[2].title,
       description: slides[2].description,
-      playAnimation: false,
     });
   });
 });
