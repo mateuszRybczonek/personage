@@ -55,3 +55,18 @@ export const HOME_URL = '/';
 export const ONBOARDING_URL = '/onboarding';
 export const SETUP_URL = '/setup';
 export const SUMMARY_URL = '/summary';
+
+// SOUNDS
+export const SOUNDS = {
+  click: 'clockStopwatch',
+  turnStart: 'fireMonster',
+  start: 'monsterYeah',
+  correct: 'snakeMonsterBite',
+  incorrect: 'monsterYellsNo',
+  pause: 'slowZombieMoan',
+  resume: 'monsterYeah',
+  hurry: 'heartbeat',
+  timesup: 'goblinDeath',
+  paperTurnPage: 'paperTurnPage',
+  summary: 'evilMonsterLaugh',
+};
