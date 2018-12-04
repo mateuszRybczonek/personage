@@ -42,7 +42,7 @@
       "title":"Game rules"
     },
     "onboarding_points": {
-      "description":"A team scores one point for each guess. If opposite team notices breaking the rules, you lose and the round goes to the next team. If draw occurs, the team with less skipped card wins.",
+      "description":"A team scores one point for each guess. If opposite team notices breaking the rules, you lose and the round goes to the next team.",
       "title": "Points"
     },
     "onboarding_round_1": {

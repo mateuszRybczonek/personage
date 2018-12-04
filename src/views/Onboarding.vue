@@ -94,15 +94,15 @@ export default {
       }, {
         title: this.$t('views.onboarding_round_1.title'),
         description: this.$t('views.onboarding_round_1.description'),
-        image: 'onboarding-1',
+        image: 'onboarding-2-en',
       }, {
         title: this.$t('views.onboarding_round_2.title'),
         description: this.$t('views.onboarding_round_2.description'),
-        image: 'onboarding-1',
+        image: 'onboarding-3-en',
       }, {
         title: this.$t('views.onboarding_round_3.title'),
         description: this.$t('views.onboarding_round_3.description'),
-        image: 'onboarding-1',
+        image: 'onboarding-4',
       }, {
         title: this.$t('views.onboarding_points.title'),
         description: this.$t('views.onboarding_points.description'),

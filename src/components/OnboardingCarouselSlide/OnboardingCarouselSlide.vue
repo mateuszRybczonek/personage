@@ -3,7 +3,7 @@
     <div :class="$style.imageContainer">
       <img
         data-test="image"
-        :src="require(`@/assets/${image}.png`)"
+        :src="require(`@/assets/onboarding/${image}.png`)"
         :class="$style.image"
       />
     </div>
