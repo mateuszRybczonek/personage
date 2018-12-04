@@ -138,7 +138,7 @@ export default {
 
       setTimeout(() => {
         if (this.currentRound === 3) this.$emit('finishGame');
-        else this.$emit('goToNextRound')
+        else this.$emit('goToNextRound');
       }, 100);
     },
   },

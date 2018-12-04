@@ -13,8 +13,6 @@ import {
   SKIPS_RANGE,
 } from '@/consts';
 
-import router from '@/router';
-
 const calculateWinner = (a, b) => {
   // More correct answers wins
   if (a.correct > b.correct) return teamA;
