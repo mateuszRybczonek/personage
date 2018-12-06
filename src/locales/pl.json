@@ -1,0 +1,97 @@
+{
+  "title": "PERSONAGE",
+  "game": {
+    "offline": "offline",
+    "round": "Runda"
+  },
+  "general": {
+    "add_to_homescreen_1": "Zainstaluj tą aplikację na Twoim iPhone'ie: wciśnij",
+    "add_to_homescreen_2": "następnie 'Dodaj do ekranu startowego'",
+    "close": "Zamknij",
+    "freepik_credit": "Potwory zaprojektowane przez Freepik",
+    "go_back": "Wstecz",
+    "on": "wł.",
+    "off": "wył."
+  },
+  "views": {
+    "emojis": {
+      "game_rules": "Zasady gry",
+      "play": "Graj",
+      "title": "Wybierz bohaterów!"
+    },
+    "game": {
+      "begins": "zaczyna",
+      "continue": "Kontynuuj",
+      "end_of_game": "KONIEC GRY!",
+      "end_of_round": "Koniec rundy!",
+      "wrong_answer": "ŹLE!",
+      "new_game": "Nowa gra",
+      "paused": "Gra zatrzymana",
+      "pause_tooltip": "Zatrzymaj i wznów grę klikając na zegar",
+      "skip": "Pomiń",
+      "swipe": "Przesuń w prawo gdy będziesz gotowy",
+      "timesup": "Koniec czasu!"
+    },
+    "home": {
+      "get_started": "Rozpocznij",
+      "title":"Personage"
+    },
+    "onboarding": {
+      "close":"Zamknij",
+      "got_it":"OK",
+      "next":"następny",
+      "skip":"pomiń",
+      "slide_num": "Slajd {index}",
+      "title":"Zasady gry"
+    },
+    "onboarding_points": {
+      "description":"Zespół dostaje jeden punkt za każdą prawidłową odpowiedź. Jeżeli preciwnicy zauważą złamanie zasad przegrywasz i runda przechodzi na następną drużynę",
+      "title": "Punkty"
+    },
+    "onboarding_round_1": {
+      "description":"Opisz osobę słowami, nie używając zakazanych słów.",
+      "title":"Runda 1"
+    },
+    "onboarding_round_2": {
+      "description":"Opisz osobę jednym słowem.",
+      "title":"Runda 2"
+    },
+    "onboarding_round_3": {
+      "description":"Opisz osobę używając gestów. Nie możesz używać żadnych dźwieków.",
+      "title":"Runda 3"
+    },
+    "onboarding_team": {
+      "title": "Zespół",
+      "description":"Podzielcie się na zespoły, każdy zespół powinien składać się z dwóch osób. Personage to gra turowa: gdy jeden zespół prezentuje, pozostałe obserwują."
+    },
+    "setup": {
+      "choose_your_heroes": "Wybierz bohaterów!",
+      "game": {
+        "cards": "Ilość kart",
+        "teams": "Ilość zespołów",
+        "skips_limit": "Limit pominięć",
+        "sound_effects": "Efekty dźwiękowe",
+        "time_per_team": "Limit czasu",
+        "title": "Nowa gra"
+      },
+      "game_rules": "Zasady gry"
+    },
+    "summary": {
+      "title": "Wyniki",
+      "correct": "Poprawne",
+      "fastest_answer": "Najszybsza odp.",
+      "incorrect": "Niepoprawne",
+      "new_game": "Nowa gra",
+      "skipped": "Pominięcia",
+      "play_again": "Gra jeszcze raz"
+    }
+  },
+  "teams": {
+    "teamA": "Zespół A",
+    "teamB": "Zespół B",
+    "teamC": "Zespół C",
+    "teamD": "Zespół D",
+    "teamE": "Zespół E",
+    "teamF": "Zespół F"
+  }
+}

@@ -9,7 +9,9 @@
     "add_to_homescreen_2": "and then Add to homescreen.",
     "close": "Close",
     "freepik_credit": "Monsters designed by Freepik",
-    "go_back": "Go back"
+    "go_back": "Go back",
+    "on": "on",
+    "off": "off"
   },
   "views": {
     "emojis": {
@@ -77,14 +79,19 @@
     "summary": {
       "title": "Summary",
       "correct": "Correct",
-      "draw": "Draw!",
       "fastest_answer": "Fastest answer",
       "incorrect": "Incorrect",
       "new_game": "New game",
       "skipped": "Skipped",
-      "play_again": "Play again",
-      "team_a_wins": "Team A wins!",
-      "team_b_wins": "Team B wins!"
+      "play_again": "Play again"
     }
+  },
+  "teams": {
+    "teamA": "Team A",
+    "teamB": "Team B",
+    "teamC": "Team C",
+    "teamD": "Team D",
+    "teamE": "Team E",
+    "teamF": "Team F"
   }
 }

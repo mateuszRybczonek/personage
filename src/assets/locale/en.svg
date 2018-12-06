@@ -1,0 +1,8 @@
+<svg id="en" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048">
+  <g id="Layer_x0020_1">
+    <path id="Path_1" data-name="Path 1" class="cls-1" fill="#eee" fill-rule="evenodd" d="M256,562.5H1792v923H256Z"/>
+    <path id="Path_2" data-name="Path 2" class="cls-2" fill="#cf142b" fill-rule="evenodd" d="M1284.47,896.216,1792,603.524V562.5h-34.99L1178.32,896.216Zm-23.96,274.094L1792,1476.71v-61.22l-425.31-245.18ZM256,632.764,710.651,896.216h106.23L256,571.484ZM792.8,1170.31,256,1480.18v5.32h96.978l546.107-315.19Z"/>
+    <path id="Path_3" data-name="Path 3" class="cls-3" fill="#00247d" fill-rule="evenodd" d="M1686.89,562.5H1149.1V872.78Zm-775.257,0H375.992L911.633,872.78ZM1792,896.216V684.473L1427.16,896.216Zm0,483.594v-209.5H1427.16ZM406.392,1485.5H911.633V1193.82Zm742.708,0h506.84L1149.1,1193.82ZM256,1170.31v218.93l377.524-218.93Zm0-274.094H633.523L256,676.965Z"/>
+    <path id="Path_4" data-name="Path 4" class="cls-2" fill="#cf142b" fill-rule="evenodd" d="M959.143,562.5V951.048H256V1115.61H959.143V1485.5H1101.59V1115.61H1792V951.048H1101.59V562.5Z"/>
+  </g>
+</svg>
