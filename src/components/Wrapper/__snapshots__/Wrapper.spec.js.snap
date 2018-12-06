@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Wrapper renders back link if url is given  1`] = `
+exports[`Wrapper renders back link if url is given 1`] = `
 <div>
   <nav
     data-test="header"
@@ -45,7 +45,7 @@ exports[`Wrapper renders back link if url is given  1`] = `
 </div>
 `;
 
-exports[`Wrapper renders close link if url is given  1`] = `
+exports[`Wrapper renders close link if url is given 1`] = `
 <div>
   <nav
     data-test="header"

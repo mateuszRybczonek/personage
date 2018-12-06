@@ -48,7 +48,7 @@ export default {
     locale: {
       type: String,
       required: true,
-    }
+    },
   },
 
   data() {
