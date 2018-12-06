@@ -17,6 +17,21 @@
       <div :class="$style.navTitle">
         <slot name="header" />
       </div>
+        <button
+          v-if="showLocale"
+          :class="[
+            $style.flag,
+            $style.navLink,
+            $style.pullRight,
+          ]"
+          data-test="language-flag"
+          @click="switchLocale()"
+        >
+          <component
+            :class="$style.flagImage"
+            :is="localeSvg"
+          />
+        </button>
       <button
         v-if="close"
         :class="[
@@ -48,13 +63,19 @@
 </template>
 
 <script>
+import { mapMutations, mapState } from 'vuex';
+
 import BackIcon from '@/assets/back.svg';
 import CloseIcon from '@/assets/close.svg';
+import FlagPL from '@/assets/locale/pl.svg';
+import FlagEN from '@/assets/locale/en.svg';
 
 export default {
   components: {
     BackIcon,
     CloseIcon,
+    FlagEN,
+    FlagPL,
   },
 
   props: {
@@ -66,6 +87,10 @@ export default {
       type: Object,
       default: null,
     },
+    showLocale: {
+      type: Boolean,
+      default: null,
+    },
     noHeader: {
       type: Boolean,
       default: false,
@@ -75,6 +100,24 @@ export default {
       default: false,
     },
   },
+
+  computed: {
+    ...mapState('settings', ['locale']),
+
+    localeSvg() {
+      return this.locale === 'en' ? 'FlagPL' : 'FlagEN';
+    },
+  },
+
+  methods: {
+    ...mapMutations('settings', ['setLocale']),
+
+    switchLocale () {
+      const newLocale = this.$i18n.locale === 'pl' ? 'en' : 'pl';
+      this.$i18n.locale = newLocale;
+      this.setLocale(newLocale);
+    },
+  }
 };
 </script>
 
@@ -116,6 +159,15 @@ export default {
 
     display: inline-block;
     color: $c-white;
+  }
+
+  .flag {
+    margin-right: 25px;
+    margin-top: 10px;
+
+    &Image {
+      @include sizing(40px);
+    }
   }
 
   .wrapperContainer {

@@ -1,5 +1,5 @@
 <template>
-  <Wrapper>
+  <Wrapper :showLocale="true">
     <template
       slot="header"
     >
