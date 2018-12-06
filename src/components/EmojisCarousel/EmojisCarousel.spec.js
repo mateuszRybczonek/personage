@@ -3,19 +3,22 @@ import EmojisCarousel from './EmojisCarousel';
 
 jest.useFakeTimers();
 
-const TITLE = 'This is a title.';
+const TITLE = 'teamA';
 
 describe('EmojisCarousel', () => {
   const wrapper = shallowMount(EmojisCarousel, {
     propsData: {
-      title: TITLE,
+      team: TITLE,
       items: ['a', 'b', 'c', 'd', 'e'],
       activeItem: 'b',
+    },
+    mocks: {
+      $t: t => t,
     },
   });
 
   it('renders title', () => {
-    expect(wrapper.find('[data-test="slider-title"]').text()).toBe(TITLE);
+    expect(wrapper.find('[data-test="slider-title"]').text()).toBe('teams.teamA');
   });
 
   it('renders all slides', () => {

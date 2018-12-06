@@ -10,6 +10,7 @@
     <OnboardingCarousel
       :slides="slides"
       :active-slide-index="activeSlideIndex"
+      :locale="locale"
       @slide="updateActiveSlide"
       @finishOnboarding="gotIt"
     />
@@ -118,6 +119,7 @@ export default {
 
   computed: {
     ...mapState('onboarding', ['isFinished', 'previousRouteName']),
+    ...mapState('settings', ['locale']),
   },
 
   methods: {

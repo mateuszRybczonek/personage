@@ -18,7 +18,8 @@
             data-test="slide"
             :title="slide.title"
             :description="slide.description"
-            :image="slide[`image_${$i18n.locale}`]"
+            :image="slide[`image_${locale}`]"
+            :locale="locale"
           />
         </div>
       </div>
@@ -44,6 +45,10 @@ export default {
       type: Number,
       required: true,
     },
+    locale: {
+      type: String,
+      required: true,
+    }
   },
 
   data() {

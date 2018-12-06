@@ -30,6 +30,8 @@ exports[`Wrapper renders back link if url is given  1`] = `
     <div />
      
     <!---->
+     
+    <!---->
   </nav>
    
   <main
@@ -51,6 +53,8 @@ exports[`Wrapper renders close link if url is given  1`] = `
     <!---->
      
     <div />
+     
+    <!---->
      
     <button
       aria-label="general.close"
@@ -91,6 +95,8 @@ exports[`Wrapper renders title 1`] = `
     <!---->
      
     <div />
+     
+    <!---->
      
     <!---->
   </nav>

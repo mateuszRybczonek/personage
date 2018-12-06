@@ -294,7 +294,7 @@ export default {
 
     togglePause() {
       if (this.isGameTimedOut) return;
-      else if (this.isGamePaused) this.resume();
+      if (this.isGamePaused) this.resume();
       else this.pause();
     },
 

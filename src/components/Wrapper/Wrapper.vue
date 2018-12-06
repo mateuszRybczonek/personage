@@ -27,7 +27,7 @@
           data-test="language-flag"
           @click="switchLocale()"
         >
-          <component
+          <Component
             :class="$style.flagImage"
             :is="localeSvg"
           />
@@ -112,12 +112,12 @@ export default {
   methods: {
     ...mapMutations('settings', ['setLocale']),
 
-    switchLocale () {
+    switchLocale() {
       const newLocale = this.$i18n.locale === 'pl' ? 'en' : 'pl';
       this.$i18n.locale = newLocale;
       this.setLocale(newLocale);
     },
-  }
+  },
 };
 </script>
 
@@ -162,8 +162,8 @@ export default {
   }
 
   .flag {
-    margin-right: 25px;
     margin-top: 10px;
+    margin-right: 25px;
 
     &Image {
       @include sizing(40px);

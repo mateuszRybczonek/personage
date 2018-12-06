@@ -4,15 +4,18 @@ import OnboardingCarousel from '@/components/OnboardingCarousel/OnboardingCarous
 const slides = [{
   title: 'Lorem',
   description: 'desc1',
-  image: 'onboarding',
+  image_en: 'onboarding',
+  image_pl: 'onboarding',
 }, {
   title: 'Ipsum',
   description: 'desc2',
-  image: 'onboarding',
+  image_en: 'onboarding',
+  image_pl: 'onboarding',
 }, {
   title: 'Dolor',
   description: 'desc3',
-  image: 'onboarding',
+  image_en: 'onboarding',
+  image_pl: 'onboarding',
 }];
 
 describe('OnboardingCarousel', () => {
@@ -20,6 +23,7 @@ describe('OnboardingCarousel', () => {
     propsData: {
       slides,
       activeSlideIndex: 0,
+      locale: 'en',
     },
   });
 
@@ -29,7 +33,7 @@ describe('OnboardingCarousel', () => {
 
   it('renders active slide', () => {
     expect(wrapper.findAll('[data-test="slide"]').at(0).props()).toEqual({
-      image: slides[0].image,
+      image: slides[0].image_en,
       title: slides[0].title,
       description: slides[0].description,
     });
@@ -37,13 +41,13 @@ describe('OnboardingCarousel', () => {
 
   it('renders other slides', () => {
     expect(wrapper.findAll('[data-test="slide"]').at(1).props()).toEqual({
-      image: slides[1].image,
+      image: slides[1].image_en,
       title: slides[1].title,
       description: slides[1].description,
     });
 
     expect(wrapper.findAll('[data-test="slide"]').at(2).props()).toEqual({
-      image: slides[2].image,
+      image: slides[2].image_en,
       title: slides[2].title,
       description: slides[2].description,
     });
