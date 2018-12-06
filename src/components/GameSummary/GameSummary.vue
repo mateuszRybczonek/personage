@@ -107,6 +107,7 @@ export default {
 
   computed: {
     ...mapState('settings', ['emojis']),
+    ...mapState('game', ['currentRound']),
 
     teams() {
       const { $store: { state: { game } } } = this;
@@ -135,7 +136,10 @@ export default {
         x: this.interactOutOfSightXCoordinate,
       });
 
-      setTimeout(() => this.$emit('goToNextRound'), 100);
+      setTimeout(() => {
+        if (this.currentRound === 3) this.$emit('finishGame');
+        else this.$emit('goToNextRound');
+      }, 100);
     },
   },
 };
@@ -192,5 +196,14 @@ export default {
 
   .teamName {
     @include relative(right 5px bottom 8px);
+  }
+
+  .summaryControls {
+    display: flex;
+    justify-content: center;
+  }
+
+  .newGameButton {
+    max-width: 250px;
   }
 </style>

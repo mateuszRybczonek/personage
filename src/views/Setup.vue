@@ -13,7 +13,7 @@
     >
       <button
         class="btn btnPrimary"
-        @click="$_redirect({ name: 'emojis' })"
+        @click="$_redirectWithSound({ name: 'emojis' })"
       >
         {{ $t('views.setup.choose_your_heroes') }}
       </button>

@@ -13,8 +13,6 @@ import {
   SKIPS_RANGE,
 } from '@/consts';
 
-import router from '@/router';
-
 export const initialTeamPayload = {
   correct: 0,
   incorrect: 0,
@@ -137,7 +135,6 @@ export default {
 
     finishGame({ commit }) {
       commit('setGameState', gameStateFinished);
-      router.push({ name: 'summary' });
     },
 
     showTimeout({ commit }) {

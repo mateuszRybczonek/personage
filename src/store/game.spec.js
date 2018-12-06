@@ -5,14 +5,9 @@ import {
   gameStatePlaying,
   gameStateFinished,
 } from '@/consts';
-import router from '@/router';
 import game, { initialState } from './game';
 
 jest.useFakeTimers();
-
-jest.mock('@/router', () => ({
-  push: jest.fn(),
-}));
 
 const { mutations, actions, getters } = game;
 
@@ -115,8 +110,6 @@ describe('actions', () => {
     const commit = jest.fn();
     actions.finishGame({ commit });
     expect(commit).toHaveBeenCalledWith('setGameState', gameStateFinished);
-    expect(router.push).toHaveBeenCalledTimes(1);
-    expect(router.push).toHaveBeenCalledWith({ name: 'summary' });
   });
 
   describe('finishTurn', () => {

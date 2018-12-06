@@ -9,13 +9,13 @@
     <section :class="$style.controlButtons">
       <button
         :class="{ 'is-hidden': currentTeamIndex === 0 }"
-        @click="currentTeamIndex -= 1"
+        @click="previousTeam"
       >
         <BackIcon :class="$style.icon" />
       </button>
       <button
         v-if="currentTeamIndex < teams.length - 1"
-        @click="currentTeamIndex += 1"
+        @click="nextTeam"
       >
         <BackIcon :class="$style.nextIcon" />
       </button>
@@ -25,11 +25,11 @@
       <button
         class="btn btnPrimary"
         :class="{ 'is-disabled': currentTeamIndex < teams.length - 1 }"
-        @click="$_redirect({ name: 'game' })"
+        @click="$_redirectWithSound({ name: 'game' }, 'start')"
       >
         {{ $t('views.emojis.play') }}
       </button>
-      <button @click="$_redirect({ name: 'onboarding' })">
+      <button @click="$_redirectWithSound({ name: 'onboarding' })">
         {{ $t('views.emojis.game_rules') }}
       </button>
     </template>
@@ -64,6 +64,18 @@ export default {
 
     currentTeam() {
       return this.teams[this.currentTeamIndex];
+    },
+  },
+
+  methods: {
+    previousTeam() {
+      this.$_playSound('click');
+      this.currentTeamIndex -= 1;
+    },
+
+    nextTeam() {
+      this.$_playSound('click');
+      this.currentTeamIndex += 1;
     },
   },
 };

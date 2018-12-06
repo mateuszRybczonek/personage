@@ -19,6 +19,7 @@
           key="summary"
           :class="$style.section"
           @goToNextRound="goToNextRound"
+          @finishGame="handleFinishGame"
         />
 
         <GameStarter
@@ -44,7 +45,7 @@
         />
 
         <div
-          v-else-if="isGameTimedOut"
+          v-else-if="isGameTimedOut || isGameFinished"
           key="timeout"
           data-test="game-timeout"
           :class="[$style.timeout, $style.section]"
@@ -123,6 +124,7 @@ export default {
     ]),
 
     ...mapGetters('game', [
+      'isGameFinished',
       'isGameReady',
       'isGamePlaying',
       'isGamePaused',
@@ -185,6 +187,7 @@ export default {
     ...mapActions('game', [
       'showTimeout',
       'finishTurn',
+      'finishGame',
       'nextRound',
       'updateFastestAnswerTime',
     ]),
@@ -218,12 +221,18 @@ export default {
         const answerTime = Math.floor((Date.now() - this.startTime) / 1000);
         this.updateFastestAnswerTime(answerTime);
       }
+      this.$_playSound('correct');
       this.incrementCorrectScore();
       if (this.currentGameCards.length) {
         this.showNextCard('correct');
       } else {
+        this.$_playSound('summary');
         this.resetTimer();
-        this.timeoutScreenLabelKey = 'views.game.end_of_round';
+        if (this.currentRound === 3) {
+          this.timeoutScreenLabelKey = 'views.game.end_of_game';
+        } else {
+          this.timeoutScreenLabelKey = 'views.game.end_of_round';
+        }
         this.showTimeout();
         await waitFor(timeoutDelay);
         this.showGameSummary = true;
@@ -236,6 +245,12 @@ export default {
       this.nextRound();
     },
 
+    handleFinishGame() {
+      this.showGameSummary = false;
+      this.$_redirectWithSound({ name: 'setup' });
+      this.setGameState(gameStateReady);
+    },
+
     async handleFinishTurn() {
       this.timeoutScreenLabelKey = 'views.game.timesup';
       this.showTimeout();
@@ -244,6 +259,7 @@ export default {
     },
 
     async handleIncorrectAnswer() {
+      this.$_playSound('incorrect');
       this.resetTimer();
       this.timeoutScreenLabelKey = 'views.game.wrong_answer';
       this.showTimeout();
@@ -282,14 +298,17 @@ export default {
     },
 
     start() {
+      this.$_playSound('turnStart');
       this.startGame();
     },
 
     pause() {
+      this.$_playSound('pause');
       this.pauseGame();
     },
 
     resume() {
+      this.$_playSound('resume');
       if (this.timePassed === 0) this.setGameState(gameStateReady);
       else this.startGame();
     },
@@ -321,5 +340,6 @@ export default {
   margin: auto;
   font-size: $fs-huge;
   color: $c-red;
+  flex-direction: column;
 }
 </style>

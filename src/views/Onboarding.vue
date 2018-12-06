@@ -22,7 +22,7 @@
           v-if="isFinished"
           data-test="close-link"
           :class="$style.footerLink"
-          @click="$_redirect({ name: previousRouteName })"
+          @click="$_redirectWithSound({ name: previousRouteName }, 'click')"
         >
           {{ $t('views.onboarding.close') }}
         </button>
@@ -119,16 +119,18 @@ export default {
     ...mapMutations('onboarding', ['finishOnboarding', 'setPreviousRouteName']),
 
     updateActiveSlide(index) {
+      this.$_playSound();
       this.activeSlideIndex = index;
     },
 
     next() {
+      this.$_playSound();
       this.activeSlideIndex += 1;
     },
 
     gotIt() {
       this.finishOnboarding();
-      this.$_redirect({ name: 'setup' });
+      this.$_redirectWithSound({ name: 'setup' });
     },
   },
 
