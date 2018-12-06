@@ -18,7 +18,7 @@
             data-test="slide"
             :title="slide.title"
             :description="slide.description"
-            :image="slide.image"
+            :image="slide[`image_${$i18n.locale}`]"
           />
         </div>
       </div>

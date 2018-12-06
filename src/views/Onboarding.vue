@@ -90,23 +90,28 @@ export default {
       slides: [{
         title: this.$t('views.onboarding_team.title'),
         description: this.$t('views.onboarding_team.description'),
-        image: 'onboarding-1',
+        image_en: 'onboarding-1',
+        image_pl: 'onboarding-1',
       }, {
         title: this.$t('views.onboarding_round_1.title'),
         description: this.$t('views.onboarding_round_1.description'),
-        image: 'onboarding-2-en',
+        image_en: 'onboarding-2-en',
+        image_pl: 'onboarding-2-pl',
       }, {
         title: this.$t('views.onboarding_round_2.title'),
         description: this.$t('views.onboarding_round_2.description'),
-        image: 'onboarding-3-en',
+        image_en: 'onboarding-3-en',
+        image_pl: 'onboarding-3-pl',
       }, {
         title: this.$t('views.onboarding_round_3.title'),
         description: this.$t('views.onboarding_round_3.description'),
-        image: 'onboarding-4',
+        image_en: 'onboarding-4',
+        image_pl: 'onboarding-4',
       }, {
         title: this.$t('views.onboarding_points.title'),
         description: this.$t('views.onboarding_points.description'),
-        image: 'onboarding-1',
+        image_en: 'onboarding-1',
+        image_pl: 'onboarding-1',
       }],
     };
   },
