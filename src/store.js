@@ -25,6 +25,7 @@ export default new Vuex.Store({
     key: LS_STATE_KEY,
     paths: [
       'onboarding.isFinished',
+      'settings.locale',
       'settings.cardsLimit',
       'settings.teamsLimit',
       'settings.skipsLimit',

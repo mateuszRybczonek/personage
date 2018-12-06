@@ -15,6 +15,7 @@ export default {
     timeLimit: 30,
     teamsLimit: 2,
     sound: false,
+    locale: 'en',
     emojis: {
       teamA: 1,
       teamB: 1,
@@ -33,6 +34,7 @@ export default {
     timeLimit: state => state.timeLimit,
     isPauseTooltipVisible: state => state.isPauseTooltipVisible,
     activeTeams: state => state.activeTeams,
+    locale: state => state.locale,
   },
   mutations: {
     setCardsLimit(state, cardsLimit) {
@@ -85,6 +87,9 @@ export default {
       } else {
         state.selectedCategories.push(category);
       }
+    },
+    setLocale(state, locale) {
+      state.locale = locale;
     },
   },
 };

@@ -36,6 +36,7 @@ export default {
 
   computed: {
     ...mapGetters('timer', ['hurryUp', 'timeLeft']),
+    ...mapGetters('settings', ['locale']),
   },
 
   watch: {
@@ -52,6 +53,7 @@ export default {
 
   mounted() {
     this.checkOrientation();
+    this.$i18n.locale = this.locale;
 
     this.$nextTick(() => {
       window.addEventListener('resize', this.resizeThrottler, false);
