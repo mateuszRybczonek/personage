@@ -3,7 +3,7 @@
     <TransitionGroup name="fade" mode="out-in">
       <div :key="currentTeam">
         <EmojisCarousel
-          :title="currentTeam | teamName"
+          :team="currentTeam"
           :items="emojisForTeam"
           :active-item="emojis[currentTeam]"
           @onChange="handleSetTeamEmoji($event, currentTeam)"

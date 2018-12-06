@@ -7,7 +7,7 @@
       :class="$style.title"
       data-test="slider-title"
     >
-      {{ title }}
+      {{ $t(`teams.${team}`) }}
     </h4>
     <div
       data-test="emojis-carousel-slider"
@@ -60,7 +60,7 @@ export default {
   },
 
   props: {
-    title: {
+    team: {
       type: String,
       required: true,
     },

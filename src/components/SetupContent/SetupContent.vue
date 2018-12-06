@@ -131,7 +131,7 @@ export default {
     },
 
     soundEffectsLabel() {
-      return `${this.$t('views.setup.game.sound_effects')}: ${this.sound ? 'on' : 'off'}`;
+      return `${this.$t('views.setup.game.sound_effects')}: ${this.sound ? this.$t('general.on') : this.$t('general.off')}`;
     },
 
     timeLimitSlider() {

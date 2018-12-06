@@ -11,7 +11,7 @@
       data-test="game-header-round"
       :class="$style.gameHeaderRound"
     >
-      {{ $t('game.round') }} {{ roundNumber }} - {{ teamName }}
+      {{ $t('game.round') }} {{ roundNumber }} - {{ $t(`teams.${teamName}`) }}
     </span>
     <ConnectionStatus :class="$style.gameHeaderConnectionStatus" />
   </div>

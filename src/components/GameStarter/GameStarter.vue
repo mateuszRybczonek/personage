@@ -16,7 +16,7 @@
       data-test="game-starter-team-title"
       :class="$style.title"
     >
-      {{ currentTeam | teamName }}
+      {{ $t(`teams.${currentTeam}`) }}
     </h2>
     <div :class="$style.swipeInfo">
       <SwipeIcon :class="$style.swipeIcon" />
