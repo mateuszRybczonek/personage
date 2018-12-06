@@ -15,27 +15,6 @@ import {
 
 import router from '@/router';
 
-const calculateWinner = (a, b) => {
-  // More correct answers wins
-  if (a.correct > b.correct) return teamA;
-  if (a.correct < b.correct) return teamB;
-
-  // If draw - less incorrect answers wins
-  if (a.incorrect < b.incorrect) return teamA;
-  if (a.incorrect > b.incorrect) return teamB;
-
-  // If draw - less skipped wins
-  if (a.skipped < b.skipped) return teamA;
-  if (a.skipped > b.skipped) return teamB;
-
-  // If draw - fastest answer wins
-  if (a.fastestAnswer < b.fastestAnswer) return teamA;
-  if (a.fastestAnswer > b.fastestAnswer) return teamB;
-
-  // Draw
-  return null;
-};
-
 export const initialTeamPayload = {
   correct: 0,
   incorrect: 0,
@@ -60,7 +39,6 @@ export default {
     isGamePaused: state => state.gameState === gameStatePaused,
     isGameTimedOut: state => state.gameState === gameStateTimeout,
     isGameFinished: state => state.gameState === gameStateFinished,
-    winner: state => calculateWinner(state.teamA, state.teamB),
     skipsLimitReached: (state, getters, rootState) => {
       const { skipsLimit } = rootState.settings;
       if (skipsLimit === SKIPS_RANGE.max) return false;

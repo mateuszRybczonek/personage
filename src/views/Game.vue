@@ -127,7 +127,6 @@ export default {
       'isGamePlaying',
       'isGamePaused',
       'isGameTimedOut',
-      'winner',
       'skipsLimitReached',
     ]),
 
