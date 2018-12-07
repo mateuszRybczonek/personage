@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 import createPersistedState from 'vuex-persistedstate';
 import {
   teamA,
+  LS_STATE_KEY,
 } from '@/consts';
 import cards from './store/cards';
 import game from './store/game';
@@ -21,6 +22,7 @@ export default new Vuex.Store({
     timer,
   },
   plugins: [createPersistedState({
+    key: LS_STATE_KEY,
     paths: [
       'onboarding.isFinished',
       'settings.locale',
