@@ -15,7 +15,6 @@ export const teamE = 'teamE';
 export const teamF = 'teamF';
 
 export const timeoutDelay = 3000;
-export const maxTimeToReturn = 60 * 60 * 1000; // 60 minutes
 
 // Game setup limits
 export const CARDS_RANGE = {
