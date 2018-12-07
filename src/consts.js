@@ -16,6 +16,12 @@ export const teamF = 'teamF';
 
 export const timeoutDelay = 3000;
 
+// Routing persistance
+export const maxTimeToReturn = 60 * 60 * 1000; // 60 minutes
+export const LS_STATE_KEY = 'personage:state';
+export const LS_ROUTE_KEY = 'personage:route';
+export const LS_LAST_ACTIVITY_AT_KEY = 'personage:last-active-at';
+
 // Game setup limits
 export const CARDS_RANGE = {
   min: 10,
