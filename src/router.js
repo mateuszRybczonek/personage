@@ -6,8 +6,14 @@ import Game from '@/views/Game';
 import Home from '@/views/Home';
 import Onboarding from '@/views/Onboarding';
 import Setup from '@/views/Setup';
+import {
+  setLastActivity,
+  getLastActivity,
+} from '@/utils/activityTracker';
 
 import {
+  maxTimeToReturn,
+  LS_ROUTE_KEY,
   EMOJIS_URL,
   GAME_URL,
   HOME_URL,
@@ -16,6 +22,8 @@ import {
 } from '@/consts';
 
 Vue.use(Router);
+
+let isFirstTransition = true;
 
 const router = new Router({
   mode: 'history',
@@ -46,6 +54,32 @@ const router = new Router({
       component: Game,
     },
   ],
+});
+
+router.beforeEach((to, from, next) => {
+  const lastRouteName = localStorage.getItem(LS_ROUTE_KEY);
+  const lastActivityAt = getLastActivity();
+
+  const hasBeenActiveRecently = Boolean(lastActivityAt
+    && Date.now() - Number(lastActivityAt) < maxTimeToReturn);
+
+  const shouldRedirect = Boolean(to.name === 'home'
+    && isFirstTransition
+    && lastRouteName
+    && hasBeenActiveRecently);
+
+  if (shouldRedirect) {
+    next({ name: lastRouteName });
+  } else {
+    next();
+  }
+
+  isFirstTransition = false;
+});
+
+router.afterEach((to) => {
+  localStorage.setItem(LS_ROUTE_KEY, to.name);
+  setLastActivity();
 });
 
 export default router;
