@@ -43,11 +43,6 @@ export const $GAME_CORRECT_ANSWER = 'GAME.CORRECT_ANSWER';
 export const $GAME_INCORRECT_ANSWER = 'GAME.INCORRECT_ANSWER';
 export const $GAME_SKIP_CARD = 'GAME.SKIP_CARD';
 
-// Local storage keys
-export const LS_STATE_KEY = 'personage:state';
-export const LS_ROUTE_KEY = 'personage:route';
-export const LS_LAST_ACTIVITY_AT_KEY = 'personage:last-active-at';
-
 // URLS
 export const EMOJIS_URL = '/emojis';
 export const GAME_URL = '/game';

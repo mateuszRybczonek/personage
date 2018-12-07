@@ -8,7 +8,6 @@ import Onboarding from '@/views/Onboarding';
 import Setup from '@/views/Setup';
 
 import {
-  LS_ROUTE_KEY,
   EMOJIS_URL,
   GAME_URL,
   HOME_URL,
@@ -17,8 +16,6 @@ import {
 } from '@/consts';
 
 Vue.use(Router);
-
-let isFirstTransition = true;
 
 const router = new Router({
   mode: 'history',
@@ -49,27 +46,6 @@ const router = new Router({
       component: Game,
     },
   ],
-});
-
-router.beforeEach((to, from, next) => {
-  const lastRouteName = localStorage.getItem(LS_ROUTE_KEY);
-
-  const shouldRedirect = Boolean(to.name === 'home'
-    && isFirstTransition
-    && lastRouteName
-    && lastRouteName !== 'home');
-
-  if (shouldRedirect) {
-    next({ name: lastRouteName });
-  } else {
-    next();
-  }
-
-  isFirstTransition = false;
-});
-
-router.afterEach((to) => {
-  localStorage.setItem(LS_ROUTE_KEY, to.name);
 });
 
 export default router;
