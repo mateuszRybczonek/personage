@@ -9,10 +9,12 @@ import router from './router';
 import store from './store';
 import i18n from './plugins/i18n';
 import soundsMixin from './mixins/sounds';
+import { setLastActivity } from '@/utils/activityTracker';
 
 Vue.config.productionTip = false;
 
 installFilters(Vue);
+store.subscribe(setLastActivity);
 
 Vue.mixin(soundsMixin);
 
