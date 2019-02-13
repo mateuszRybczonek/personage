@@ -1,0 +1,9 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "com.netlify.personage",
+    "sha256_cert_fingerprints":
+    ["0C:D7:A7:FB:79:95:15:11:5C:D6:58:7F:06:0B:E8:AE:99:DF:78:CD:A7:59:BE:48:08:D4:7C:74:45:1D:AA:52"]
+  }
+}]
