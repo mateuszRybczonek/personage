@@ -66,6 +66,7 @@ router.beforeEach((to, from, next) => {
   const shouldRedirect = Boolean(to.name === 'home'
     && isFirstTransition
     && lastRouteName
+    && lastRouteName !== 'home'
     && hasBeenActiveRecently);
 
   if (shouldRedirect) {
